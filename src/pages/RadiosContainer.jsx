@@ -17,6 +17,7 @@ const RadiosContainer = () => {
 	const form2Initial = {
 		name: 'radioGroup2',
 		selectedOption: 'value23',
+		disabled: true,
 		options: [
 			{ value: 'value21', label: 'value21' },
 			{ value: 'value22', label: 'value22' },

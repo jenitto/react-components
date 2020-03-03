@@ -1,0 +1,105 @@
+$compName: 'sftk-radio';
+
+.#{$compName} {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	margin: 1rem;
+
+	&.disabled {
+		cursor: default;
+		opacity: 0.5;
+	}
+
+	&--checked .#{$compName}__button,
+	&:hover:not(.disabled) .#{$compName}__button{
+		box-shadow: 0 0 0 .2rem $primary;
+	}
+
+	&--checked .#{$compName}__button-icon {
+		opacity: 1;
+	}
+
+	&:hover:not(.disabled) .#{$compName}__button-container::after {
+		opacity: 0.5;
+	}
+
+	&__button-container {
+		position: relative;
+		display: inline-block;
+		margin-right: 1.6rem;
+
+		&::after {
+			content: '';
+			position: absolute;
+			height: 4rem;
+			width: 4rem;
+			border-radius: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			background: #404040;
+			opacity: 0;
+			transition: .3s ease;
+		}
+	}
+
+	&__button {
+		box-shadow:0 0 0 .2rem #E6E6E6;
+		width: 2.4rem;
+    height: 2.4rem;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+		vertical-align: middle;
+		z-index: 1;
+		border-radius: 50%;
+
+		&-icon {
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			height: 0;
+			width: 0;
+			background-color: $primary;
+			border-radius: 50%;
+			height: 1.6rem;
+			width: 1.6rem;
+			opacity: 0;
+			transition: opacity .2s ease;
+		}
+		
+	}
+
+	&__label {
+		font-size: 1.6rem;
+		line-height: 2.4rem;
+		color: #E6E6E6;
+		user-select: none;
+		vertical-align: middle;
+	}
+
+	&__input {
+		top: 0;
+    left: 0;
+    width: 100%;
+    cursor: inherit;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    z-index: 1;
+		position: absolute;
+
+		&:focus ~ .#{$compName}__button-container >	.#{$compName}__button {
+			box-shadow:0 0 0 .2rem $primary;
+		}
+
+		&:focus ~ .#{$compName}__button-container::after {
+			opacity: 0.5;
+		}
+	}
+	
+}

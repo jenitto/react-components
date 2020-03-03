@@ -11,6 +11,7 @@ html { font-family: 'Inter', sans-serif; }
 @import './components/Checkboxes/Switch/Switch.scss';
 @import './components/Checkboxes/Checkbox/Checkbox.scss';
 @import './components/Checkboxes/RadioGroup/RadioGroup.scss';
+@import './components/Checkboxes/RadioGroup/Radio/Radio.scss';
 
 html, body {
 	font-size: 10px;
@@ -37,6 +38,24 @@ html, body {
 	font-size: 1.5rem;
 	line-height: 4.4rem;
 	margin-bottom: 2rem;
+}
+
+* {
+	scrollbar-color: #616161 #363636;
+	scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+	width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+	background-color: #363636;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	background-color: #616161;
 }
 
 @media screen and (max-width: 792px) {
