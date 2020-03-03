@@ -19,9 +19,9 @@ $compName: 'sftk-input-text';
 		box-sizing: border-box;
 		padding: 2.4rem 3.6rem 0.8rem 1.6rem;
 		outline: none;
-		border: 1px solid transparent;
+		border: .1rem solid transparent;
 		border-radius: 0;
-		border-bottom: 2px solid #858585;
+		border-bottom: .2rem solid #858585;
 		display: block;
 
 		&::-ms-clear {
@@ -39,13 +39,13 @@ $compName: 'sftk-input-text';
 		&:focus {
 			outline: none;
 			box-shadow: $boxShadow;
-			border-top: 1px solid #FDEBB3;
-			border-left: 1px solid #FDEBB3;
-			border-right: 1px solid #FDEBB3;
+			border-top: .1rem solid #FDEBB3;
+			border-left: .1rem solid #FDEBB3;
+			border-right: .1rem solid #FDEBB3;
 		}
 
 		&:hover:not(:disabled) {
-			border-bottom: 2px solid #FDEBB3;
+			border-bottom: .2rem solid #FDEBB3;
 		}
 
 		&:focus ~ .#{$compName}__label,
@@ -82,7 +82,7 @@ $compName: 'sftk-input-text';
 		width: 28rem;
 		&:before {
 			content: '';
-			height: 2px;
+			height: .2rem;
 			width: 0;
 			bottom: 0px;
 			position: absolute;

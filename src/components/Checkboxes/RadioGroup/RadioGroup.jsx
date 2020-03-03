@@ -13,6 +13,7 @@ const RadioGroup = ({ form, onSelectionChange }) => {
 			{
 				form.options.map((item) => (
 					<Radio
+						key={item.value}
 						name={form.name}
 						value={item.value}
 						label={item.label}

@@ -8,9 +8,7 @@ const Radio = ({ name, value, label, selected, disabled, onSelectionChange }) =>
 	};
 
 	return (
-		<label
-			key={value}
-			className={`sftk-radio ${selected ? 'sftk-radio--checked' : ''} ${disabled ? 'disabled' : ''}`}>
+		<label className={`sftk-radio ${selected ? 'sftk-radio--checked' : ''} ${disabled ? 'disabled' : ''}`}>
 			<input
 				className="sftk-radio__input"
 				type="radio"
