@@ -17,7 +17,7 @@ $compName: 'sftk-checkbox';
 	&--indeterminate .#{$compName}__button,
 	&:hover:not(.disabled) .#{$compName}__button,
 	&.focused .#{$compName}__button {
-		box-shadow:0 0 0 .2rem $primary;
+		box-shadow:0 0 0 .2rem $colorPrimary;
 	}
 
 	&--checked .#{$compName}__button-icon {
@@ -56,7 +56,7 @@ $compName: 'sftk-checkbox';
 	}
 
 	&__button {
-		box-shadow:0 0 0 .2rem #E6E6E6;
+		box-shadow:0 0 0 .2rem $colorNeutral50;
 		width: 2rem;
     height: 2rem;
     display: inline-block;
@@ -73,7 +73,7 @@ $compName: 'sftk-checkbox';
 			transform: translate(-50%,-50%);
 			height: 0;
 			width: 0;
-			background-color: $primary;
+			background-color: $colorPrimary;
 			transition: all .2s ease;
 		}
 		
@@ -82,7 +82,7 @@ $compName: 'sftk-checkbox';
 	&__label {
 		font-size: 1.6rem;
 		line-height: 2.4rem;
-		color: #E6E6E6;
+		color: $colorNeutral50;
 		user-select: none;
 		vertical-align: middle;
 	}

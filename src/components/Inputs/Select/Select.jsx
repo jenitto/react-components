@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const ARROW_KEY_UP = 'ArrowUp';
@@ -9,37 +9,43 @@ const ENTER_KEY = 'Enter';
 
 const Select = ({ name, placeholder, multiple, disabled, selectedOptions, options, onSelectionChange }) => {
 
+	const node = useRef();
 	const [opened, setOpened] = useState(false);
 
+	const handleClickOutside = e => {
+		if (node.current.contains(e.target)) {
+			return;
+		}
+		_handleOpenSelect(false);
+	};
+
+	useEffect(() => {
+		if (opened) {
+			document.addEventListener("mousedown", handleClickOutside);
+		} else {
+			document.removeEventListener("mousedown", handleClickOutside);
+		}
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	});
+
 	const _handleKeyDownSelect = (e) => {
-		switch (e.key) {
-			case ENTER_KEY:
-				_handleOpenSelect(true);
-				return;
-			case ESCAPE_KEY:
-				_handleOpenSelect(false);
-				return;
-			default:
-				return;
+		if (e.key === ENTER_KEY) {
+			_handleOpenSelect(!opened);
+		} else if (e.key === ESCAPE_KEY) {
+			_handleOpenSelect(false);
 		}
 	}
 
 	const _handleKeyDownOption = (e, option) => {
-		switch (e.key) {
-			case ENTER_KEY:
-				onSelectionChange(option);
-				return;
-			case ARROW_KEY_UP:
-				console.log('up, previous focus');
-				return;
-			case ARROW_KEY_DOWN:
-				console.log('down, next focus');
-				return;
-			case ESCAPE_KEY:
-				_handleOpenSelect(false);
-				return;
-			default:
-				return;
+		if (e.key === ENTER_KEY) {
+			handleSelectChanges(option);
+			e.stopPropagation();
+		} else if (e.key === ARROW_KEY_UP) {
+			console.log('up, previous focus');
+		} else if (e.key === ARROW_KEY_DOWN) {
+			console.log('down, next focus');
 		}
 	}
 
@@ -50,6 +56,27 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 		setOpened(open);
 	}
 
+	const handleSelectChanges = (selectedOption) => {
+		if (disabled || selectedOption.disabled) {
+			return;
+		}
+
+		let newSelectedOptions;
+
+		if (!multiple) {
+			newSelectedOptions = [selectedOption];
+			_handleOpenSelect(false);
+		} else {
+			newSelectedOptions = [...selectedOptions];
+			if (newSelectedOptions.find((item) => item.value === selectedOption.value)) { // unadd
+				newSelectedOptions = [...newSelectedOptions.filter((item) => selectedOption.value !== item.value)];
+			} else { // add
+				newSelectedOptions.push(selectedOption);
+			}
+		}
+		onSelectionChange([...newSelectedOptions]);
+	}
+
 	const parseSelectedValues = () => selectedOptions.map((a) => a.label).join(', ');
 
 	const isEnabled = (option) => selectedOptions.find((item) => item.value === option.value);
@@ -57,7 +84,11 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 	disabled = disabled || !options.length;
 
 	return (
-		<div className={`sftk-select ${opened ? 'opened' : 'closed'} ${disabled ? 'disabled' : ''}`}>
+		<div
+			ref={node}
+			className={`sftk-select ${opened ? 'opened' : 'closed'} ${disabled ? 'disabled' : ''}`}
+			tabIndex='0'
+			onKeyDown={_handleKeyDownSelect}>
 
 
 			<select
@@ -74,8 +105,7 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 			<div
 				className='sftk-select__selected'
 				onClick={() => _handleOpenSelect(!opened)}
-				tabIndex='0'
-				onKeyPress={_handleKeyDownSelect}>
+			>
 				<div className="sftk-select__title-container">
 					<div className="sftk-select__name">{name}</div>
 					<div className="sftk-select__placeholder">{selectedOptions?.length ? parseSelectedValues() : placeholder}</div>
@@ -94,26 +124,27 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 			{
 				opened
 					? <div className="sftk-select__select">
-						{
-							options.map((item) => (
-								<div
-									key={item.value}
-									className="sftk-select__option"
-									disabled={item.disabled}
-									tabIndex={item.disabled ? -1 : 0}
-									onClick={() => onSelectionChange(item)}
-									onKeyDown={(e) => _handleKeyDownOption(e, item)}>
-									<span className="sftk-select__option-label">{item.label}</span>
-									{isEnabled(item)
-										? (<svg className="sftk-select__option-icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 448.8 448.8">
-											<g id="check">
-												<polygon points="142.8,323.85 35.7,216.75 0,252.45 142.8,395.25 448.8,89.25 413.1,53.55" fill="#FDEBB3" />
-											</g>
-										</svg>)
-										: null}
-								</div>
-							))
-						}
+						{options.map((item) => (
+							<div
+								key={item.value}
+								className={`sftk-select__option ${item.disabled ? 'disabled' : ''}`}
+								disabled={item.disabled}
+								tabIndex={item.disabled ? -1 : 0}
+								onClick={() => handleSelectChanges(item)}
+								onKeyDown={(e) => _handleKeyDownOption(e, item)}>
+								<span className="sftk-select__option-label">{item.label}</span>
+								{isEnabled(item) ? (
+									<svg className="sftk-select__option-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<mask id="mask2" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="8" width="22" height="17">
+											<path d="M25.8254 8.2251L12.0004 22.0501L6.17539 16.2251L5.02539 17.3751L11.4254 23.7751L12.0004 24.3251L12.5754 23.7751L26.9754 9.3751L25.8254 8.2251Z" fill="#858585" />
+										</mask>
+										<g mask="url(#mask2)">
+											<path d="M4 4H28V28H4V4Z" fill="#FDEBB3" />
+										</g>
+									</svg>
+								) : null}
+							</div>
+						))}
 					</div>
 					: null
 			}

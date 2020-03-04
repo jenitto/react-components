@@ -1,11 +1,36 @@
 $compName: 'sftk-select';
 
+$optionHeight: 2.4rem;
+
 .#{$compName} {
 	position: relative;
 	width: 28rem;
 
-	&:not(.disabled) {
+	&:not(.disabled) .#{$compName}__selected {
 		cursor: pointer;
+	}
+
+	&:hover:not(.disabled),
+	&:focus:not(.disabled) {
+		.#{$compName}__placeholder {
+			color: $colorNeutral50;
+		}
+
+		.#{$compName}__selected {
+			border-bottom-color: $colorSecondary;
+		}
+
+		.#{$compName}__selected {
+			outline: none;
+			box-shadow: $boxShadow;
+			border-top: .1rem solid #FDEBB3;
+			border-left: .1rem solid #FDEBB3;
+			border-right: .1rem solid #FDEBB3;
+		}
+	}
+
+	&.disabled {
+		opacity: 0.5;
 	}
 
 	& select {
@@ -30,21 +55,11 @@ $compName: 'sftk-select';
 		border-radius: 0;
 		border-bottom: .2rem solid #858585;
 		display: block;
-
-		&:hover {
-			color: #E6E6E6;
-		}
 	}
 
 	&__title-container {
 		display: inline-block;
 		width: calc(100% - 4rem);
-	}
-
-	&__select-icon {
-		float: right;
-		margin-top: .8rem;
-		transition: transform .3s ease;
 	}
 
 	&__name {
@@ -62,8 +77,16 @@ $compName: 'sftk-select';
 		color: #B5B5B5;
 		user-select: none;
 	}
+
+	&__select-icon {
+		float: right;
+		margin-top: .8rem;
+		transition: transform .3s ease;
+	}
 	
 	&__select {
+		overflow-y: auto;
+    max-height: 25rem;
 		position: absolute;
 		z-index: 999;
 		left: 0;
@@ -74,21 +97,28 @@ $compName: 'sftk-select';
 
 	&__option {
 		background: #363636;
-		font-size: 1.6rem;
-		line-height: 2.4rem;
-		color: #B5B5B5;
 		padding: 1.2rem 1.6rem;
 		vertical-align: middle;
 		
-		&:hover, &:focus {
+		&:hover:not(.disabled),
+		&:focus:not(.disabled) {
+			outline: none;
 			background-color: #404040;
-			color: #E6E6E6;
+			color: $colorNeutral50;
+			cursor: pointer;
+		}
+
+		&.disabled .#{$compName}__option-label {
+			opacity: 0.5;
 		}
 		
 		&-label {
 			@include truncate;
 			display: inline-block;
-			max-width: calc(100% - 30px);
+			font-size: 1.6rem;
+			line-height: 2.4rem;
+			color: #B5B5B5;
+			max-width: calc(100% - 3.4rem);
 		}
 
 		&-icon {
@@ -104,43 +134,5 @@ $compName: 'sftk-select';
     to {
         opacity:1;
     }
-}
-
-
-
-	/* Point the arrow upwards when the select box is open (active): */
-	&__selected.select-arrow-active:after {
-		border-color: transparent transparent #fff transparent;
-		top: 7px;
 	}
-
-	/* style the items (options), including the selected item: */
-	.select-items div,
-	.select-selected {
-		color: #ffffff;
-		padding: 8px 16px;
-		border: 1px solid transparent;
-		border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-		cursor: pointer;
-	}
-
-	/* Style items (options): */
-	.select-items {
-		position: absolute;
-		background-color: DodgerBlue;
-		top: 100%;
-		left: 0;
-		right: 0;
-		z-index: 99;
-	}
-
-	/* Hide the items when the select box is closed: */
-	.select-hide {
-		display: none;
-	}
-
-	.select-items div:hover, .same-as-selected {
-		background-color: rgba(0, 0, 0, 0.1);
-	}
-
 }

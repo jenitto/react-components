@@ -1,9 +1,11 @@
-$primary: #FCDD82;
-$secondary:  #FDEBB3;
-$boxShadow: 0 0 1rem 0 rgba(252,221,130,1);
-$textShadow: 0 0 1rem #fcdd82;
+$colorPrimary: #FCDD82;
+$colorSecondary:  #FDEBB3;
 $colorError: #E43E42;
 $colorSuccess: #73C480;
+$colorNeutral50: #E6E6E6;
+
+$boxShadow: 0 0 1rem 0 $colorPrimary;
+$textShadow: 0 0 1rem $colorPrimary;
 
 @mixin truncate {
 	white-space: nowrap;

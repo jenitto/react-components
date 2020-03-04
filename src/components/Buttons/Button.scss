@@ -54,11 +54,11 @@ $compName: 'sftk-button';
 	}
 
 	&.primary {
-		background-color: $primary;
+		background-color: $colorPrimary;
 		color: #1A1A1A;
 
 		&:hover:not(:disabled) {
-			background-color: $secondary;
+			background-color: $colorSecondary;
 		}
 
 		& .#{$compName}__icon path {
@@ -73,7 +73,7 @@ $compName: 'sftk-button';
 		transition: outline 0.3s ease;
 
 		&:hover:not(:disabled) {
-			outline: 1px solid  $primary;
+			outline: 1px solid  $colorPrimary;
 		}
 
 		& .#{$compName}__icon path {

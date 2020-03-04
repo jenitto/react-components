@@ -19,7 +19,7 @@ $compName: 'sftk-switch';
 
 	&--checked {
 		& .#{$compName}__button-icon {
-			background-color: $primary;
+			background-color: $colorPrimary;
 			transform: translateX(3rem);
 		}
 	}
@@ -45,7 +45,7 @@ $compName: 'sftk-switch';
 			width: 2.4rem;
     	height: 2.4rem;
     	border-radius: 50%;
-			background-color: #E6E6E6;
+			background-color: $colorNeutral50;
 			display: inline-block;
 			position: relative;
 			z-index: 1;
@@ -58,7 +58,7 @@ $compName: 'sftk-switch';
 	&__label {
 		font-size: 1.6rem;
 		line-height: 2.4rem;
-		color: #E6E6E6;
+		color: $colorNeutral50;
 		user-select: none;
 		vertical-align: middle;
 	}
