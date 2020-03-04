@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-const TextArea = ({ label, minRows = 2, maxRows = 10, disabled, message }) => {
+const TextArea = ({ label, minRows = 2, maxRows = 1000000000, disabled, message }) => {
 
 	const [value, setValue] = useState('');
 	const [rows, setRows] = useState(minRows);

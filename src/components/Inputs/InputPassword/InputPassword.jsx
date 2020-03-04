@@ -28,7 +28,6 @@ const InputPassword = ({ label, disabled, message }) => {
 					</g>
 				</svg>
 			</div>
-			<span className="sftk-input-password__bar"></span>
 			<label className="sftk-input-password__label">{label}</label>
 			<span className={`sftk-input-password__hint sftk-input-password__hint--${message?.type}`}>{message?.label}</span>
 		</div >

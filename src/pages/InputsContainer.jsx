@@ -14,7 +14,6 @@ const InputsContainer = () => {
 					<TextArea
 						label="Label"
 						minRows={3}
-						maxRows={1}
 						message={{ type: 'error', label: 'Hay un error!' }}></TextArea>
 					<TextArea
 						message={{ type: 'info', label: 'Mensaje informativo' }}

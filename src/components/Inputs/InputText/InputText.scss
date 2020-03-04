@@ -42,6 +42,7 @@ $compName: 'sftk-input-text';
 			border-top: .1rem solid $colorSecondary;
 			border-left: .1rem solid $colorSecondary;
 			border-right: .1rem solid $colorSecondary;
+			border-bottom: .2rem solid $colorSecondary;
 		}
 
 		&:hover:not(:disabled) {
@@ -54,11 +55,6 @@ $compName: 'sftk-input-text';
 			font-size: 1.3rem;
 			line-height: 2rem;
 			top: 0.4rem;
-		}
-
-		&:focus ~ .#{$compName}__bar:before {
-			width: 28rem;
-			background: #FCDD82;
 		}
 
 	}
@@ -74,22 +70,6 @@ $compName: 'sftk-input-text';
 		line-height: 2.4rem;
 		transition: 0.3s ease all;
 		user-select: none;
-	}
-	
-	&__bar {
-		position: relative;
-		display: block;
-		width: 28rem;
-		&:before {
-			content: '';
-			height: .2rem;
-			width: 0;
-			bottom: 0px;
-			position: absolute;
-			background-color: transparent;
-			// transition: 0.3s ease all;
-			left: 0%;
-		}
 	}
 
 	&__icons-container {

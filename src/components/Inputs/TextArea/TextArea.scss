@@ -15,6 +15,7 @@ $compName: 'sftk-textarea';
 
 	.#{$compName}__textarea {
 		@include customScrollbar;
+		display: block;
 		font-family: 'Inter', sans-serif;
 		font-size: 1.6rem;
 		line-height: 2.4rem;
@@ -27,7 +28,6 @@ $compName: 'sftk-textarea';
 		border: .1rem solid transparent;
 		border-radius: 0;
 		border-bottom: .2rem solid #858585;
-		display: block;
 
 		&::-ms-clear {
 			display: none;
@@ -65,18 +65,18 @@ $compName: 'sftk-textarea';
 	}
 
 	&__label {
-		box-sizing: border-box;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 1.4rem 0 0 1.6rem;
 		width: calc(100% - 2px);
 		margin: 1px;
+		box-sizing: border-box;
 		background-color: #2E2E2E;
 		color: #B5B5B5;
 		font-size: 1.6rem;
 		font-weight: normal;
-		position: absolute;
 		pointer-events: none;
-		top: 0;
-		left: 0;
-		padding: 1.4rem 0 0 1.6rem;
 		line-height: 2.4rem;
 		user-select: none;
 		border: 1px solid transparent;

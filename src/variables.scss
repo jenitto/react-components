@@ -14,8 +14,11 @@ $textShadow: 0 0 1rem $colorPrimary;
 }
 
 @mixin customScrollbar {
+	$scrollbarGrayLight: #616161;
+	$scrollbarGrayDark: #363636;
+
 	& {
-		scrollbar-color: #616161 #363636;
+		scrollbar-color: $scrollbarGrayLight $scrollbarGrayDark;
 		scrollbar-width: thin;
 	}
 	
@@ -24,11 +27,11 @@ $textShadow: 0 0 1rem $colorPrimary;
 	}
 	
 	&::-webkit-scrollbar-track {
-		background-color: #363636;
+		background-color: $scrollbarGrayDark;
 	}
 	
 	&::-webkit-scrollbar-thumb {
 		border-radius: 8px;
-		background-color: #616161;
+		background-color: $scrollbarGrayLight;
 	}
 }

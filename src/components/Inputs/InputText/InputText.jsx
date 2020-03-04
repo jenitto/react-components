@@ -17,7 +17,6 @@ const InputText = ({ label, disabled, message }) => {
 			<div className="sftk-input-text__icons-container">
 				<span className={`sftk-input-text__badge sftk-input-text__badge--${message?.type}`}></span>
 			</div>
-			<span className="sftk-input-text__bar"></span>
 			<label className="sftk-input-text__label">{label}</label>
 			<span className={`sftk-input-text__hint sftk-input-text__hint--${message?.type}`}>{message?.label}</span>
 		</div>
