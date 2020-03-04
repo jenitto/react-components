@@ -7,7 +7,7 @@ const ARROW_KEY_DOWN = 'ArrowDown';
 const ESCAPE_KEY = 'Escape';
 const ENTER_KEY = 'Enter';
 
-const Select = ({ name, placeholder, multiple, disabled, selectedOptions, options, onSelectionChange }) => {
+const Select = ({ name, placeholder, multiple, disabled, selectedOptions, options, message, onSelectionChange }) => {
 
 	const node = useRef();
 	const [opened, setOpened] = useState(false);
@@ -46,6 +46,8 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 			console.log('up, previous focus');
 		} else if (e.key === ARROW_KEY_DOWN) {
 			console.log('down, next focus');
+		} else if (e.key === ESCAPE_KEY) {
+			_handleOpenSelect(false);
 		}
 	}
 
@@ -79,16 +81,14 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 
 	const parseSelectedValues = () => selectedOptions.map((a) => a.label).join(', ');
 
-	const isEnabled = (option) => selectedOptions.find((item) => item.value === option.value);
+	const isSelected = (option) => selectedOptions.find((item) => item.value === option.value);
 
 	disabled = disabled || !options.length;
 
 	return (
 		<div
 			ref={node}
-			className={`sftk-select ${opened ? 'opened' : 'closed'} ${disabled ? 'disabled' : ''}`}
-			tabIndex='0'
-			onKeyDown={_handleKeyDownSelect}>
+			className={`sftk-select ${opened ? 'opened' : 'closed'} ${disabled ? 'disabled' : ''}`}>
 
 
 			<select
@@ -103,15 +103,18 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 
 
 			<div
-				className='sftk-select__selected'
+				className={`sftk-select__selected sftk-select__selected--${message?.type} ${disabled ? 'disabled' : ''}`}
+				tabIndex={`${disabled ? -1 : 0}`}
+				onKeyDown={_handleKeyDownSelect}
 				onClick={() => _handleOpenSelect(!opened)}
 			>
 				<div className="sftk-select__title-container">
 					<div className="sftk-select__name">{name}</div>
 					<div className="sftk-select__placeholder">{selectedOptions?.length ? parseSelectedValues() : placeholder}</div>
 				</div>
-				<div className="sftk-select__select-icon">
-					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<div className="sftk-select__select-icons-container">
+					<span className={`sftk-select__badge sftk-select__badge--${message?.type}`}></span>
+					<svg className="sftk-select__select-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="16" height="20">
 							<path d="M15.2 6.3999V22.4499L9.775 17.0249L8.625 18.1749L15.425 24.9749L16 25.5249L16.575 24.9749L23.375 18.1749L22.225 17.0249L16.8 22.4499V6.3999H15.2Z" fill="#858585" />
 						</mask>
@@ -124,16 +127,19 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 			{
 				opened
 					? <div className="sftk-select__select">
+						<div
+							className="sftk-select__focus-trap"
+							tabIndex="0" />
 						{options.map((item) => (
 							<div
 								key={item.value}
-								className={`sftk-select__option ${item.disabled ? 'disabled' : ''}`}
+								className={`sftk-select__option ${item.disabled ? 'disabled' : ''} ${isSelected(item) ? 'selected' : ''}`}
 								disabled={item.disabled}
 								tabIndex={item.disabled ? -1 : 0}
 								onClick={() => handleSelectChanges(item)}
 								onKeyDown={(e) => _handleKeyDownOption(e, item)}>
 								<span className="sftk-select__option-label">{item.label}</span>
-								{isEnabled(item) ? (
+								{isSelected(item) ? (
 									<svg className="sftk-select__option-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<mask id="mask2" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="8" width="22" height="17">
 											<path d="M25.8254 8.2251L12.0004 22.0501L6.17539 16.2251L5.02539 17.3751L11.4254 23.7751L12.0004 24.3251L12.5754 23.7751L26.9754 9.3751L25.8254 8.2251Z" fill="#858585" />
@@ -145,9 +151,13 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 								) : null}
 							</div>
 						))}
+						<div
+							className="sftk-select__focus-trap"
+							tabIndex="0" />
 					</div>
 					: null
 			}
+			<div className={`sftk-select__hint sftk-select__hint--${message?.type}`}>{message?.label}</div>
 		</div >
 	);
 }
@@ -165,6 +175,10 @@ Select.propTypes = {
 			disabled: PropTypes.bool,
 		})
 	).isRequired,
+	message: PropTypes.shape({
+		type: PropTypes.oneOf(['error', 'success', 'info']),
+		label: PropTypes.string,
+	}),
 	onSelectionChange: PropTypes.func.isRequired,
 };
 

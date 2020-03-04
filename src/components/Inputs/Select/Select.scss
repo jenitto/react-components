@@ -10,25 +10,6 @@ $optionHeight: 2.4rem;
 		cursor: pointer;
 	}
 
-	&:hover:not(.disabled),
-	&:focus:not(.disabled) {
-		.#{$compName}__placeholder {
-			color: $colorNeutral50;
-		}
-
-		.#{$compName}__selected {
-			border-bottom-color: $colorSecondary;
-		}
-
-		.#{$compName}__selected {
-			outline: none;
-			box-shadow: $boxShadow;
-			border-top: .1rem solid #FDEBB3;
-			border-left: .1rem solid #FDEBB3;
-			border-right: .1rem solid #FDEBB3;
-		}
-	}
-
 	&.disabled {
 		opacity: 0.5;
 	}
@@ -40,6 +21,14 @@ $optionHeight: 2.4rem;
 	&.opened {
 		.#{$compName}__select-icon {
 			transform: rotate(180deg);
+		}
+
+		.#{$compName}__placeholder {
+			color: $colorNeutral50;
+		}
+
+		.#{$compName}__name {
+			color: $colorSecondary;
 		}
 	}
 
@@ -55,11 +44,38 @@ $optionHeight: 2.4rem;
 		border-radius: 0;
 		border-bottom: .2rem solid #858585;
 		display: block;
+
+		&--success {
+			border-bottom-color: $colorSuccess;
+		}
+
+		&--error {
+			border-bottom-color: $colorError;
+		}
+
+		&:focus:not(.disabled) {
+			border-bottom-color: $colorSecondary;
+			outline: none;
+			box-shadow: $boxShadow;
+			border-top: .1rem solid $colorSecondary;
+			border-left: .1rem solid $colorSecondary;
+			border-right: .1rem solid $colorSecondary;
+		}
+
+		&:hover:not(.disabled),
+		&:focus:not(.disabled) {
+			border-bottom-color: $colorSecondary;
+			
+			.#{$compName}__placeholder {
+				color: $colorNeutral50;
+			}
+		}
+
 	}
 
 	&__title-container {
 		display: inline-block;
-		width: calc(100% - 4rem);
+		width: calc(100% - 6rem);
 	}
 
 	&__name {
@@ -78,13 +94,52 @@ $optionHeight: 2.4rem;
 		user-select: none;
 	}
 
-	&__select-icon {
+	&__select-icons-container {
 		float: right;
 		margin-top: .8rem;
-		transition: transform .3s ease;
+	}
+	
+	&__select-icon {
+		vertical-align: middle;
+		transition: transform .2s ease;
+	}
+
+	&__badge {
+		display: inline-block;
+		margin-right: .4rem;
+		vertical-align: middle;
+    height: 1.3rem;
+    width: 1.3rem;
+		border-radius: 50%;
+		background-color: transparent;
+		vertical-align: middle;
+
+		&--success {
+			background-color: $colorSuccess;
+		}
+
+		&--error {
+			background-color: $colorError;
+		}
+	}
+
+	&__hint {
+		margin-top: 4px;
+		height: 2rem;
+		font-size: 1.3rem;
+		line-height: 2rem;
+
+		&--error {
+			color: $colorError;
+		}
+
+		&--success {
+			color: $colorSuccess;
+		}
 	}
 	
 	&__select {
+		@include customScrollbar;
 		overflow-y: auto;
     max-height: 25rem;
 		position: absolute;
@@ -99,10 +154,13 @@ $optionHeight: 2.4rem;
 		background: #363636;
 		padding: 1.2rem 1.6rem;
 		vertical-align: middle;
+
+		&:focus {
+			outline: none;
+		}
 		
 		&:hover:not(.disabled),
 		&:focus:not(.disabled) {
-			outline: none;
 			background-color: #404040;
 			color: $colorNeutral50;
 			cursor: pointer;
@@ -110,6 +168,10 @@ $optionHeight: 2.4rem;
 
 		&.disabled .#{$compName}__option-label {
 			opacity: 0.5;
+		}
+
+		&.selected .#{$compName}__option-label {
+			color: $colorSecondary;
 		}
 		
 		&-label {
