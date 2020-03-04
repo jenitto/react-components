@@ -106,19 +106,6 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 		<div
 			ref={node}
 			className={`sftk-select ${opened ? 'opened' : 'closed'} ${disabled ? 'disabled' : ''}`}>
-
-
-			<select
-				multiple={multiple}
-				disabled={disabled}>
-				{
-					options.map((item) => (
-						<option key={item.value} value={item.value}>{item.label}</option>
-					))
-				}
-			</select>
-
-
 			<div
 				className={`sftk-select__selected sftk-select__selected--${message?.type} ${disabled ? 'disabled' : ''}`}
 				tabIndex={`${disabled ? -1 : 0}`}

@@ -89,45 +89,49 @@ const SelectsContainer = () => {
 		<Fragment>
 			<h1>Select</h1>
 			<div className="container">
-				<div className="title">Select Single</div>
-				<Select
-					name={select1.name}
-					placeholder={select1.placeholder}
-					multiple={select1.multiple}
-					disabled={select1.disabled}
-					selectedOptions={select1.selectedOptions}
-					options={select1.options}
-					message={select1.message}
-					onSelectionChange={onSelection1Change}></Select>
-				<div className="title">Select Multiple</div>
-				<Select
-					name={select2.name}
-					placeholder={select2.placeholder}
-					multiple={select2.multiple}
-					disabled={select2.disabled}
-					selectedOptions={select2.selectedOptions}
-					options={select2.options}
-					message={select2.message}
-					onSelectionChange={onSelection2Change}></Select>
-				<div className="title">Select Disabled</div>
-				<Select
-					name={select3.name}
-					placeholder={select3.placeholder}
-					multiple={select3.multiple}
-					disabled={select3.disabled}
-					selectedOptions={select3.selectedOptions}
-					options={select3.options}
-					message={select3.message}
-					onSelectionChange={onSelection3Change}></Select>
-				<div className="title">Select Empty</div>
-				<Select
-					name={select4Initial.name}
-					placeholder={select4Initial.placeholder}
-					multiple={select4Initial.multiple}
-					disabled={select4Initial.disabled}
-					selectedOptions={select4Initial.selectedOptions}
-					options={select4Initial.options}
-					onSelectionChange={onSelection3Change}></Select>
+				<div className="column">
+					<div className="title">Select Single</div>
+					<Select
+						name={select1.name}
+						placeholder={select1.placeholder}
+						multiple={select1.multiple}
+						disabled={select1.disabled}
+						selectedOptions={select1.selectedOptions}
+						options={select1.options}
+						message={select1.message}
+						onSelectionChange={onSelection1Change}></Select>
+					<div className="title">Select Multiple</div>
+					<Select
+						name={select2.name}
+						placeholder={select2.placeholder}
+						multiple={select2.multiple}
+						disabled={select2.disabled}
+						selectedOptions={select2.selectedOptions}
+						options={select2.options}
+						message={select2.message}
+						onSelectionChange={onSelection2Change}></Select>
+				</div>
+				<div className="column">
+					<div className="title">Select Disabled</div>
+					<Select
+						name={select3.name}
+						placeholder={select3.placeholder}
+						multiple={select3.multiple}
+						disabled={select3.disabled}
+						selectedOptions={select3.selectedOptions}
+						options={select3.options}
+						message={select3.message}
+						onSelectionChange={onSelection3Change}></Select>
+					<div className="title">Select Empty</div>
+					<Select
+						name={select4Initial.name}
+						placeholder={select4Initial.placeholder}
+						multiple={select4Initial.multiple}
+						disabled={select4Initial.disabled}
+						selectedOptions={select4Initial.selectedOptions}
+						options={select4Initial.options}
+						onSelectionChange={onSelection3Change}></Select>
+				</div>
 			</div>
 		</Fragment >
 	);

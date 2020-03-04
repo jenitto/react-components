@@ -102,7 +102,7 @@ $compName: 'sftk-button';
 			top: 0;
 			left: 0;
 			pointer-events: none;
-			background-color: #FDEBB3;
+			background-color: $colorSecondary;
 			background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
 			background-repeat: no-repeat;
 			background-position: 50%;

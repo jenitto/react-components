@@ -9,11 +9,11 @@ import SelectsContainer from './pages/SelectsContainer';
 function App() {
 	return (
 		<Fragment>
+			<InputsContainer></InputsContainer>
 			<SelectsContainer></SelectsContainer>
 			<RadiosContainer></RadiosContainer>
 			<CheckboxContainer></CheckboxContainer>
 			<SwitchsContainer></SwitchsContainer>
-			<InputsContainer></InputsContainer>
 			<ButtonsContainer></ButtonsContainer>
 		</Fragment >
 	);
