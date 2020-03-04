@@ -10,17 +10,19 @@ const ENTER_KEY = 'Enter';
 const Select = ({ name, placeholder, multiple, disabled, selectedOptions, options, message, onSelectionChange }) => {
 
 	const node = useRef();
+	const focusTrap = useRef();
 	const [opened, setOpened] = useState(false);
 
 	const handleClickOutside = e => {
 		if (node.current.contains(e.target)) {
 			return;
 		}
-		_handleOpenSelect(false);
+		handleOpenSelect(false);
 	};
 
 	useEffect(() => {
 		if (opened) {
+			focusTrap.current.focus();
 			document.addEventListener("mousedown", handleClickOutside);
 		} else {
 			document.removeEventListener("mousedown", handleClickOutside);
@@ -30,32 +32,46 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 		};
 	});
 
-	const _handleKeyDownSelect = (e) => {
+	const handleKeyDownSelect = (e) => {
 		if (e.key === ENTER_KEY) {
-			_handleOpenSelect(!opened);
+			handleOpenSelect(!opened);
 		} else if (e.key === ESCAPE_KEY) {
-			_handleOpenSelect(false);
+			handleOpenSelect(false);
 		}
 	}
 
-	const _handleKeyDownOption = (e, option) => {
+	const handleKeyDownOption = (e, option, index) => {
 		if (e.key === ENTER_KEY) {
 			handleSelectChanges(option);
 			e.stopPropagation();
 		} else if (e.key === ARROW_KEY_UP) {
-			console.log('up, previous focus');
+			e.preventDefault();
+			e.stopPropagation();
+			handleFocus(index - 1);
 		} else if (e.key === ARROW_KEY_DOWN) {
-			console.log('down, next focus');
+			e.preventDefault();
+			e.stopPropagation();
+			handleFocus(index + 1);
 		} else if (e.key === ESCAPE_KEY) {
-			_handleOpenSelect(false);
+			handleOpenSelect(false);
 		}
 	}
 
-	const _handleOpenSelect = (open) => {
+	const handleOpenSelect = (open) => {
 		if (disabled) {
 			return;
 		}
 		setOpened(open);
+	}
+
+	const handleFocus = index => {
+		const length = Object.keys(focusableElements).length;
+		if (index >= length) {
+			index = 0;
+		} else if (index < 0) {
+			index = length - 1;
+		}
+		focusableElements[`item-${index}`].focus();
 	}
 
 	const handleSelectChanges = (selectedOption) => {
@@ -67,7 +83,7 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 
 		if (!multiple) {
 			newSelectedOptions = [selectedOption];
-			_handleOpenSelect(false);
+			handleOpenSelect(false);
 		} else {
 			newSelectedOptions = [...selectedOptions];
 			if (newSelectedOptions.find((item) => item.value === selectedOption.value)) { // unadd
@@ -83,6 +99,7 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 
 	const isSelected = (option) => selectedOptions.find((item) => item.value === option.value);
 
+	const focusableElements = [];
 	disabled = disabled || !options.length;
 
 	return (
@@ -105,8 +122,8 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 			<div
 				className={`sftk-select__selected sftk-select__selected--${message?.type} ${disabled ? 'disabled' : ''}`}
 				tabIndex={`${disabled ? -1 : 0}`}
-				onKeyDown={_handleKeyDownSelect}
-				onClick={() => _handleOpenSelect(!opened)}
+				onKeyDown={handleKeyDownSelect}
+				onClick={() => handleOpenSelect(!opened)}
 			>
 				<div className="sftk-select__title-container">
 					<div className="sftk-select__name">{name}</div>
@@ -128,16 +145,19 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 				opened
 					? <div className="sftk-select__select">
 						<div
+							ref={focusTrap}
 							className="sftk-select__focus-trap"
-							tabIndex="0" />
-						{options.map((item) => (
+							tabIndex="0"
+							onFocus={() => handleFocus(0)} />
+						{options.map((item, index) => (
 							<div
 								key={item.value}
+								ref={x => focusableElements[`item-${index}`] = x}
 								className={`sftk-select__option ${item.disabled ? 'disabled' : ''} ${isSelected(item) ? 'selected' : ''}`}
 								disabled={item.disabled}
 								tabIndex={item.disabled ? -1 : 0}
 								onClick={() => handleSelectChanges(item)}
-								onKeyDown={(e) => _handleKeyDownOption(e, item)}>
+								onKeyDown={(e) => handleKeyDownOption(e, item, index)}>
 								<span className="sftk-select__option-label">{item.label}</span>
 								{isSelected(item) ? (
 									<svg className="sftk-select__option-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -153,7 +173,8 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 						))}
 						<div
 							className="sftk-select__focus-trap"
-							tabIndex="0" />
+							tabIndex="0"
+							onFocus={() => handleFocus(Object.keys(focusableElements).length - 1)} />
 					</div>
 					: null
 			}

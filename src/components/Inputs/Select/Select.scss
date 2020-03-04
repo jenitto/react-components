@@ -65,7 +65,7 @@ $optionHeight: 2.4rem;
 		&:hover:not(.disabled),
 		&:focus:not(.disabled) {
 			border-bottom-color: $colorSecondary;
-			
+
 			.#{$compName}__placeholder {
 				color: $colorNeutral50;
 			}
@@ -155,6 +155,10 @@ $optionHeight: 2.4rem;
 		padding: 1.2rem 1.6rem;
 		vertical-align: middle;
 
+		&::-moz-focus-inner {
+			border: 0;
+		}
+		
 		&:focus {
 			outline: none;
 		}

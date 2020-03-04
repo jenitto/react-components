@@ -21,6 +21,7 @@ const SelectsContainer = () => {
 			{ value: 'it', label: 'Italia', disabled: true },
 			{ value: 'de', label: 'Alemania' },
 			{ value: 'nd', label: 'Países muy bajos, tanto que corta el texto', disabled: true },
+			{ value: 'hu', label: 'Hungría', disabled: false },
 		]
 	};
 
@@ -56,6 +57,16 @@ const SelectsContainer = () => {
 			{ value: '1', label: 'Extra cheese' },
 			{ value: '2', label: 'Mushroom' }
 		]
+	};
+
+	const select4Initial = {
+		name: 'Empty',
+		placeholder: 'Este select está vacío',
+		multiple: false,
+		selectedOptions: [],
+		disabled: false,
+		message: message2,
+		options: []
 	};
 
 	const [select1, setSelect1] = useState(select1Initial);
@@ -107,6 +118,15 @@ const SelectsContainer = () => {
 					selectedOptions={select3.selectedOptions}
 					options={select3.options}
 					message={select3.message}
+					onSelectionChange={onSelection3Change}></Select>
+				<div className="title">Select Empty</div>
+				<Select
+					name={select4Initial.name}
+					placeholder={select4Initial.placeholder}
+					multiple={select4Initial.multiple}
+					disabled={select4Initial.disabled}
+					selectedOptions={select4Initial.selectedOptions}
+					options={select4Initial.options}
 					onSelectionChange={onSelection3Change}></Select>
 			</div>
 		</Fragment >
