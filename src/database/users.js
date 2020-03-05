@@ -7,7 +7,7 @@ export const users = [
 		city: 'Madrid',
 		description: 'Nivel mínimo',
 		status: 'ok',
-		avatar: 'https://randomuser.me/api/portraits/thumb/men/0.jpg'
+		avatar: 'http://randomuser.me/api/portraits/thumb/men/0.jpg'
 	},
 	{
 		id: 2,
@@ -17,7 +17,7 @@ export const users = [
 		city: 'Madrid',
 		description: 'Nivel mínimo',
 		status: 'ok',
-		avatar: 'https://randomuser.me/api/portraits/thumb/women/0.jpg'
+		avatar: 'http://randomuser.me/api/portraits/thumb/women/0.jpg'
 	},
 	{
 		id: 3,
@@ -27,7 +27,7 @@ export const users = [
 		city: 'Madrid',
 		description: 'Nivel mínimo',
 		status: 'ok',
-		avatar: 'https://randomuser.me/api/portraits/thumb/men/1.jpg'
+		avatar: 'http://randomuser.me/api/portraits/thumb/men/1.jpg'
 	},
 	{
 		id: 4,
@@ -37,7 +37,7 @@ export const users = [
 		city: 'Madrid',
 		description: 'Nivel mínimo',
 		status: 'error',
-		avatar: 'https://randomuser.me/api/portraits/thumb/women/1.jpg'
+		avatar: 'http://randomuser.me/api/portraits/thumb/women/7.jpg'
 	},
 	{
 		id: 5,
@@ -47,7 +47,7 @@ export const users = [
 		city: 'Madrid',
 		description: 'Nivel mínimo',
 		status: 'ok',
-		avatar: 'https://randomuser.me/api/portraits/thumb/men/2.jpg'
+		avatar: 'http://randomuser.me/api/portraits/thumb/men/2.jpg'
 	},
 	{
 		id: 6,
@@ -57,7 +57,7 @@ export const users = [
 		city: 'Madrid',
 		description: 'Nivel mínimo',
 		status: 'warning',
-		avatar: 'https://randomuser.me/api/portraits/thumb/women/2.jpg'
+		avatar: 'http://randomuser.me/api/portraits/thumb/women/2.jpg'
 	},
 	{
 		id: 7,
@@ -67,7 +67,7 @@ export const users = [
 		city: 'Madrid',
 		description: 'Nivel mínimo',
 		status: 'ok',
-		avatar: 'https://randomuser.me/api/portraits/thumb/men/3.jpg'
+		avatar: 'http://randomuser.me/api/portraits/thumb/men/3.jpg'
 	},
 	{
 		id: 8,
@@ -77,6 +77,6 @@ export const users = [
 		city: 'Madrid',
 		description: 'Nivel mínimo',
 		status: 'ok',
-		avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg'
+		avatar: 'http://randomuser.me/api/portraits/thumb/men/4.jpg'
 	}
 ];

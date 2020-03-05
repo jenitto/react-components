@@ -33,6 +33,7 @@ const Table = ({ columns, data }) => {
 					</tbody>
 				</table>
 			</div>
+			<div className="sftk-table__footer"></div>
 		</div>
 	)
 };

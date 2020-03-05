@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Chip = ({ label, color }) => (
 	<div className="sftk-chip" style={{ color: color }}>
 		<span className="sftk-chip__icon" style={{ backgroundColor: color }}></span>
-		{label}
+		<span className="sftk-chip__label">{label}</span>
 	</div>
 );
 

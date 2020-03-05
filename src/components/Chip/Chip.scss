@@ -3,9 +3,10 @@ $compName: 'sftk-chip';
 .#{$compName} {
 	background-color: $colorNeutral800;
 	color: $colorNeutral100;
-	margin: -.2rem 0;
-	padding: .2rem .8rem;
 	border-radius: .4rem;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	padding: 0 .8rem;
 
 	&__icon {
 		display: inline-block;
@@ -15,5 +16,10 @@ $compName: 'sftk-chip';
 		margin-right: .6rem;
 		background-color: $colorNeutral100;
 		position: relative;
+	}
+
+	&__label {
+		font-size: 1.6rem;
+		line-height: 2.4rem;
 	}
 }

@@ -24,8 +24,6 @@ $compName: 'sftk-table';
 	}
 
 	&__row {
-		height: 56px;
-		max-height: 56px;
     display: table-row;
     outline: 0;
 		vertical-align: middle;
@@ -48,12 +46,14 @@ $compName: 'sftk-table';
 
 	&__cell {
 		display: table-cell;
-    padding: 1.6rem;
+		height: 56px;
+		box-sizing: border-box;
     text-align: left;
 		vertical-align: inherit;
 		font-size: 1.6rem;
-		line-height: 2.4rem;
 		color: $colorNeutral50;
-		white-space:nowrap;
+		white-space: nowrap;
+		vertical-align: middle;
+		padding: 0 1.6rem;
 	}
 }
