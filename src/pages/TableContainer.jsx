@@ -42,21 +42,15 @@ const TableContainer = () => {
 			setData(users.map((user) => {
 				return {
 					...user,
-					status: <Chip label={user.description} color={colors[user.status]} />,
-					avatar: <TableAvatar name={`${user.name} ${user.surname}`} image={user.avatar} />
+					status: renderChip(user.description, colors[user.status]),
+					avatar: renderAvatar(`${user.name} ${user.surname}`, user.avatar)
 				};
-
-				// return {
-				// 	...user,
-				// 	status: renderChip(user.description, colors[user.status]),
-				// 	avatar: renderAvatar(`${user.name} ${user.surname}`, user.avatar)
-				// };
 			}));
 		}
 	}, []);
 
-	// const renderChip = (label, color) => <Chip label={label} color={color} />;
-	// const renderAvatar = (label, image) => <TableAvatar name={label} image={image} />
+	const renderChip = (label, color) => <Chip label={label} color={color} />;
+	const renderAvatar = (label, image) => <TableAvatar name={label} image={image} />
 
 	return (
 		<Fragment>
