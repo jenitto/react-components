@@ -1,0 +1,29 @@
+$compName: 'sftk-button-icon';
+
+.#{$compName} {
+	@include rippleEffect;
+	position: relative;
+	background-color: transparent;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+	width: 3.2rem;
+	height: 3.2rem;
+	border-radius: 50%;
+
+	&:hover:not(:disabled) {
+		background-color: $colorNeutral700;
+		cursor: pointer;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+	}
+
+	&:focus {
+		background-color: $colorNeutral700;
+		box-shadow: $boxShadow;
+	}
+	
+}

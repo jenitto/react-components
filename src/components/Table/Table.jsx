@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableCell from './Cell/TableCell';
+import TableCell from './Cells/TableCell';
+import TableCellHeader from './Cells/TableCellHeader';
+import Checkbox from '../Checkboxes/Checkbox/Checkbox';
+import TableFooter from './Footer/TableFooter';
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, check = false }) => {
 	return (
 		<div className="sftk-table">
 			<div className="sftk-table__table-wrapper">
 				<table className="sftk-table__table">
 					<thead className="sftk-table__head">
 						<tr className="sftk-table__row sftk-table__row--head">
+							{check ? <th className="sftk-table__cell"><Checkbox></Checkbox></th> : null}
 							{columns.map((column) => (
-								<th
+								<TableCellHeader
 									key={column.id}
-									className="sftk-table__cell sftk-table__cell--strong">
-									{column.label}
-								</th>
+									content={column.label} />
 							))}
 						</tr>
 					</thead>
@@ -23,6 +25,7 @@ const Table = ({ columns, data }) => {
 							<tr
 								key={row.id}
 								className="sftk-table__row sftk-table__row--normal">
+								{check ? <th className="sftk-table__cell"><Checkbox></Checkbox></th> : null}
 								{columns.map((column) => (
 									<TableCell
 										key={`${column.id}-${row.id}`}
@@ -33,7 +36,10 @@ const Table = ({ columns, data }) => {
 					</tbody>
 				</table>
 			</div>
-			<div className="sftk-table__footer"></div>
+			<TableFooter
+				size={20}
+				page={1}
+				total={200}></TableFooter>
 		</div>
 	)
 };

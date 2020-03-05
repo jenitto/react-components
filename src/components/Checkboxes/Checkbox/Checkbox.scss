@@ -36,7 +36,6 @@ $compName: 'sftk-checkbox';
 	&__button-container {
 		position: relative;
 		display: inline-block;
-		margin-right: 1.6rem;
 
 		&::after {
 			content: '';
@@ -81,6 +80,7 @@ $compName: 'sftk-checkbox';
 		font-size: 1.6rem;
 		line-height: 2.4rem;
 		color: $colorNeutral50;
+		margin-left: 1.6rem;
 		user-select: none;
 		vertical-align: middle;
 	}

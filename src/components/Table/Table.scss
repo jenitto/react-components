@@ -1,4 +1,5 @@
 @import "./Avatar/TableAvatar.scss";
+@import "./Footer/TableFooter.scss";
 
 $compName: 'sftk-table';
 
@@ -27,7 +28,7 @@ $compName: 'sftk-table';
     display: table-row;
     outline: 0;
 		vertical-align: middle;
-		
+		padding: 0 1.6rem;
 
 		&--head {
 			background-color: $colorNeutral500;
@@ -56,4 +57,5 @@ $compName: 'sftk-table';
 		vertical-align: middle;
 		padding: 0 1.6rem;
 	}
+
 }

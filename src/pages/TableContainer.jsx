@@ -57,7 +57,11 @@ const TableContainer = () => {
 			<h1>Table</h1>
 			<div className="container">
 				<div className="title">Table</div>
-				<Table columns={columns} data={data}></Table>
+				<Table
+					columns={columns}
+					data={data}
+					check={true}>
+				</Table>
 			</div>
 		</Fragment>
 	);
