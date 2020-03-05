@@ -1,0 +1,19 @@
+$compName: 'sftk-chip';
+
+.#{$compName} {
+	background-color: $colorNeutral800;
+	color: $colorNeutral100;
+	margin: -.2rem 0;
+	padding: .2rem .8rem;
+	border-radius: .4rem;
+
+	&__icon {
+		display: inline-block;
+		border-radius: 50%;
+		height: 1rem;
+		width: 1rem;
+		margin-right: .6rem;
+		background-color: $colorNeutral100;
+		position: relative;
+	}
+}

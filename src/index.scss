@@ -15,6 +15,7 @@ html { font-family: 'Inter', sans-serif; }
 @import './components/Checkboxes/RadioGroup/Radio/Radio.scss';
 @import './components/Buttons/Button.scss';
 @import './components/Table/Table.scss';
+@import './components/Chip/Chip.scss';
 
 html, body {
 	@include customScrollbar;

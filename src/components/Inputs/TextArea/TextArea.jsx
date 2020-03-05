@@ -1,12 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const TextArea = ({ label, minRows = 2, maxRows = 1000000000, disabled, message }) => {
 
 	const [value, setValue] = useState('');
 	const [rows, setRows] = useState(minRows);
-	const textarea = useRef();
-
 
 	const handleChange = (event) => {
 		const textareaLineHeight = 24;
@@ -33,7 +31,6 @@ const TextArea = ({ label, minRows = 2, maxRows = 1000000000, disabled, message 
 	return (
 		<div className={`sftk-textarea ${disabled ? 'sftk-textarea--disabled' : ''}`}>
 			<textarea
-				ref={textarea}
 				required
 				className={`sftk-textarea__textarea sftk-textarea__textarea--${message?.type}`}
 				rows={rows}
