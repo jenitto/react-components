@@ -25,7 +25,8 @@ const Table = ({ columns, data, check = false }) => {
 								<TableCellHeader
 									key={column.id}
 									content={column.label}
-									sortable={true} />
+									sortable={column.sortable}
+									searchable={column.searchable} />
 							))}
 						</tr>
 					</thead>

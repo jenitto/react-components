@@ -9,27 +9,39 @@ const TableContainer = () => {
 		{
 			label: 'Nombre',
 			id: 'name',
+			sortable: true,
+			searchable: true,
 		},
 		{
 			label: 'Apellidos',
 			id: 'surname',
+			sortable: true,
+			searchable: false,
 		},
 		{
 			label: 'Edad',
 			id: 'age',
+			sortable: false,
+			searchable: false,
 			maxWidth: '12rem',
 		},
 		{
 			label: 'Ciudad',
 			id: 'city',
+			sortable: false,
+			searchable: true,
 		},
 		{
 			label: 'Estado',
 			id: 'status',
+			sortable: true,
+			searchable: true,
 		},
 		{
 			label: 'Avatar',
 			id: 'avatar',
+			sortable: true,
+			searchable: true,
 		},
 	];
 

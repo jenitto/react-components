@@ -1,6 +1,7 @@
 $compName: 'sftk-table-cell-header';
 
 .#{$compName} {
+	position: relative;
 	
 	&:hover:not(.disabled) {
 		cursor: pointer;
@@ -14,6 +15,10 @@ $compName: 'sftk-table-cell-header';
 		}
 	}
 
+	&.focus:not(.disabled) {
+		box-shadow: inset 0px -2px 0px $colorPrimary;
+	}
+
 	&-icon {
 		margin-left: .8rem;
 		opacity: 0;
@@ -22,6 +27,61 @@ $compName: 'sftk-table-cell-header';
 		&--reverse {
 			transform: scaleY(-1);
 		}
+	}
+
+	&__input {
+		width: calc(100% - 5rem);
+		height: 100%;
+		font-size: 1.6rem;
+		line-height: 2.4rem;
+		padding-top: 2.6rem;
+    vertical-align: middle;
+		background: transparent;
+		color: $colorNeutral50;
+		box-sizing: border-box;
+		outline: none;
+		border: none;
+		border-radius: 0;
+		display: inline-block;
+
+		&::-ms-clear {
+			display: none;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&:valid ~ .#{$compName}__input-icon {
+				opacity: 1;
+		}
+
+		&:focus ~ .#{$compName}__label,
+		&:valid ~ .#{$compName}__label {
+			color: $colorPrimary;
+			font-size: 1.3rem;
+			font-weight: normal;
+			line-height: 2rem;
+			top: 0.4rem;
+		}
+
+		&-icon {
+			opacity: 0;
+			vertical-align: bottom;
+		}
+
+	}
+
+	&__label {
+		color: #B5B5B5;
+		font-size: 1.6rem;
+		position: absolute;
+		pointer-events: none;
+		left: 1.6rem;
+		top: 1.4rem;
+		line-height: 2.4rem;
+		transition: 0.3s ease all;
+		user-select: none;
 	}
 
 }

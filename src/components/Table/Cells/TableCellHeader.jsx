@@ -7,16 +7,19 @@ const SORT = {
 	DESC: 'desc',
 }
 
-const TableCellHeader = ({ content, sort, sortable }) => {
+const TableCellHeader = ({ content, sort, sortable, searchable }) => {
 
+	const [inputValue, setInputValue] = useState('');
 	const [newSort, setSort] = useState(sort);
+	const [focus, setFocus] = useState(false);
+
 	const handleSort = () => {
 		SORT.ASC === newSort
 			? setSort(SORT.DESC)
 			: setSort(SORT.ASC)
 	};
 
-	const doubleArrow = () => (
+	const iconDoubleArrow = () => (
 		<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<circle cx="16" cy="16" r="16" fill="#4D4D4D" />
 			<mask id="mask6" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="22" height="22">
@@ -28,7 +31,7 @@ const TableCellHeader = ({ content, sort, sortable }) => {
 		</svg>
 	);
 
-	const arrowDown = () => (
+	const iconArrowDown = () => (
 		<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="16" height="20">
 				<path d="M15.2 6.3999V22.4499L9.775 17.0249L8.625 18.1749L15.425 24.9749L16 25.5249L16.575 24.9749L23.375 18.1749L22.225 17.0249L16.8 22.4499V6.3999H15.2Z" fill="#858585" />
@@ -39,12 +42,38 @@ const TableCellHeader = ({ content, sort, sortable }) => {
 		</svg>
 	);
 
+	const iconCross = () => (
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<mask id="mask7" mask-type="alpha" maskUnits="userSpaceOnUse" x="7" y="6" width="11" height="12">
+				<path d="M7.71875 6.99976L7 7.71851L11.3906 12.1091L7 16.4998L7.71875 17.2185L12.1094 12.8279L16.5 17.2185L17.2188 16.4998L12.8281 12.1091L17.2188 7.71851L16.5 6.99976L12.1094 11.3904L7.71875 6.99976Z" fill="#858585" />
+			</mask>
+			<g mask="url(#mask7)">
+				<path d="M4 4H20V20H4V4Z" fill="#FCDD82" />
+			</g>
+		</svg>
+
+	);
+
 	return (
-		<th className={`sftk-table__cell sftk-table-cell-header ${newSort ? 'visible' : ''} ${!sortable ? 'disabled' : ''}`}>
-			{content}
+		<th className={`sftk-table__cell sftk-table-cell-header ${newSort ? 'visible' : ''} ${!sortable ? 'disabled' : ''} ${focus ? 'focus' : ''}`}>
+			<input className="sftk-table-cell-header__input"
+				type="text"
+				required
+				disabled={!searchable}
+				value={inputValue}
+				onChange={(e) => setInputValue(e.target.value)}
+				onFocus={() => setFocus(true)}
+				onBlur={() => setFocus(false)} />
+			<span className="sftk-table-cell-header__input-icon"
+				onClick={() => setInputValue('')}>
+				{iconCross()}
+			</span>
+			<span className="sftk-table-cell-header__label">
+				{content}
+			</span>
 			<span className={`sftk-table-cell-header-icon ${SORT.ASC === newSort ? 'sftk-table-cell-header-icon--reverse' : ''}`}>
 				<ButtonIcon
-					icon={newSort ? arrowDown() : doubleArrow()}
+					icon={newSort ? iconArrowDown() : iconDoubleArrow()}
 					onClick={handleSort} />
 			</span>
 		</th>
