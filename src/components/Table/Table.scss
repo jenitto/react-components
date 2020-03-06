@@ -1,5 +1,6 @@
 @import "./Avatar/TableAvatar.scss";
 @import "./Footer/TableFooter.scss";
+@import "./Cells/TableCellHeader.scss";
 
 $compName: 'sftk-table';
 
@@ -56,6 +57,14 @@ $compName: 'sftk-table';
 		white-space: nowrap;
 		vertical-align: middle;
 		padding: 0 1.6rem;
+
+		&-icon {
+			display: inline-block;
+
+			&--reverse {
+				transform: scaleY(-1);
+			}
+		}
 	}
 
 }

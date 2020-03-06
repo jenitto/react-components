@@ -1,0 +1,27 @@
+$compName: 'sftk-table-cell-header';
+
+.#{$compName} {
+	
+	&:hover:not(.disabled) {
+		cursor: pointer;
+		box-shadow: inset 0px -2px 0px $colorSecondary;
+	}
+
+	&:hover:not(.disabled),
+	&.visible {
+		.#{$compName}-icon {
+			opacity: 1;
+		}
+	}
+
+	&-icon {
+		margin-left: .8rem;
+		opacity: 0;
+		display: inline-block;
+
+		&--reverse {
+			transform: scaleY(-1);
+		}
+	}
+
+}

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 const TableCell = ({ content }) => {
 	return (
-		<td className="sftk-table__cell sftk-table__cell--normal">{content}</td>
+		<td className="sftk-table__cell">
+			{content}
+		</td>
 	)
 };
 

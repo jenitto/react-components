@@ -24,7 +24,8 @@ const Table = ({ columns, data, check = false }) => {
 							{columns.map((column) => (
 								<TableCellHeader
 									key={column.id}
-									content={column.label} />
+									content={column.label}
+									sortable={true} />
 							))}
 						</tr>
 					</thead>

@@ -11,6 +11,7 @@ $compName: 'sftk-button-icon';
 	width: 3.2rem;
 	height: 3.2rem;
 	border-radius: 50%;
+	vertical-align: middle;
 
 	&:hover:not(:disabled) {
 		background-color: $colorNeutral700;
