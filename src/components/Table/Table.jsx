@@ -12,7 +12,15 @@ const Table = ({ columns, data, check = false }) => {
 				<table className="sftk-table__table">
 					<thead className="sftk-table__head">
 						<tr className="sftk-table__row sftk-table__row--head">
-							{check ? <th className="sftk-table__cell"><Checkbox></Checkbox></th> : null}
+							{check ?
+								<th className="sftk-table__cell">
+									<Checkbox
+										value={'all'}
+										checked={true}
+										setChecked={(e) => console.log(e)}>
+									</Checkbox>
+								</th>
+								: null}
 							{columns.map((column) => (
 								<TableCellHeader
 									key={column.id}
@@ -25,7 +33,15 @@ const Table = ({ columns, data, check = false }) => {
 							<tr
 								key={row.id}
 								className="sftk-table__row sftk-table__row--normal">
-								{check ? <th className="sftk-table__cell"><Checkbox></Checkbox></th> : null}
+								{check ?
+									<td className="sftk-table__cell">
+										<Checkbox
+											value={row.id}
+											checked={true}
+											setChecked={(e) => console.log(e)}>
+										</Checkbox>
+									</td>
+									: null}
 								{columns.map((column) => (
 									<TableCell
 										key={`${column.id}-${row.id}`}

@@ -13,7 +13,11 @@ const TableFooter = ({ size, total, page }) => {
 			<div className="sftk-table-footer__container sftk-table-footer__container--left">
 				<div className="sftk-table-footer__spacer">
 					<span className="sftk-table-footer__text--hint">Elementos por página:&nbsp;</span>
-					<TableSelect selected={size} options={[20, 40, 60]}></TableSelect>
+					<TableSelect
+						selected={size}
+						options={[20, 40, 60]}
+						onSelectionChange={(e) => console.log(e)}
+					/>
 				</div>
 				<div className="sftk-table-footer__spacer">
 					<span className="sftk-table-footer__text--hint">{page * size - size + 1}-{page * size}&nbsp;</span>
@@ -22,7 +26,10 @@ const TableFooter = ({ size, total, page }) => {
 			</div>
 			<div className="sftk-table-footer__container sftk-table-footer__container--right">
 				<div className="sftk-table-footer__spacer">
-					<TableSelect selected={page} options={pagesArray()}></TableSelect>
+					<TableSelect
+						selected={page}
+						options={pagesArray()}
+						onSelectionChange={(e) => console.log(e)} />
 					de {totalPages()} páginas
 			</div>
 				<div className="sftk-table-footer__spacer">
