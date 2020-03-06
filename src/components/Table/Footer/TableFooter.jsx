@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../../Buttons/ButtonIcon';
+import TableSelect from './Select/TableSelect';
 
 const TableFooter = ({ size, total, page }) => {
+
+	const totalPages = () => Math.ceil(total / page);
+	const pagesArray = () => Array.from(Array(totalPages()), (e, i) => i + 1);
+
 	return (
 		<div className="sftk-table-footer">
 			<div className="sftk-table-footer__container sftk-table-footer__container--left">
 				<div className="sftk-table-footer__spacer">
 					<span className="sftk-table-footer__text--hint">Elementos por página:&nbsp;</span>
-					<span className="component">{size}</span>
+					<TableSelect selected={size} options={[20, 40, 60]}></TableSelect>
 				</div>
 				<div className="sftk-table-footer__spacer">
 					<span className="sftk-table-footer__text--hint">{page * size - size + 1}-{page * size}&nbsp;</span>
@@ -17,8 +22,8 @@ const TableFooter = ({ size, total, page }) => {
 			</div>
 			<div className="sftk-table-footer__container sftk-table-footer__container--right">
 				<div className="sftk-table-footer__spacer">
-					<span className="component">{page}&nbsp;</span>
-					de {Math.ceil(total / page)} páginas
+					<TableSelect selected={page} options={pagesArray()}></TableSelect>
+					de {totalPages()} páginas
 			</div>
 				<div className="sftk-table-footer__spacer">
 					<ButtonIcon icon={

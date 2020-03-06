@@ -6,9 +6,7 @@ const ButtonIcon = ({ icon, disabled, onClick }) => (
 		className="sftk-button-icon"
 		disabled={disabled}
 		onClick={onClick}>
-		<span className="sftk-button-icon__icon">
-			{icon}
-		</span>
+		{icon}
 	</button >
 );
 

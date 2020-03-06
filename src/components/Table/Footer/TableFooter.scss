@@ -1,3 +1,5 @@
+@import "./Select/TableSelect.scss";
+
 $compName: 'sftk-table-footer';
 
 .#{$compName} {
@@ -46,5 +48,5 @@ $compName: 'sftk-table-footer';
 		}
 	}
 	
-	
 }
+	

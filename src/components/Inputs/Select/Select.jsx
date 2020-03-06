@@ -10,7 +10,6 @@ const ENTER_KEY = 'Enter';
 const Select = ({ name, placeholder, multiple, disabled, selectedOptions, options, message, onSelectionChange }) => {
 
 	const node = useRef();
-	const focusTrap = useRef();
 	const [opened, setOpened] = useState(false);
 
 	const handleClickOutside = e => {
@@ -22,7 +21,7 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 
 	useEffect(() => {
 		if (opened) {
-			focusTrap.current.focus();
+			handleFocus(0);
 			document.addEventListener("mousedown", handleClickOutside);
 		} else {
 			document.removeEventListener("mousedown", handleClickOutside);
@@ -132,7 +131,6 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 				opened
 					? <div className="sftk-select__select">
 						<div
-							ref={focusTrap}
 							className="sftk-select__focus-trap"
 							tabIndex="0"
 							onFocus={() => handleFocus(0)} />

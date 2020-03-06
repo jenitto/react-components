@@ -1,6 +1,7 @@
 $compName: 'sftk-chip';
 
 .#{$compName} {
+	display: inline-block;
 	background-color: $colorNeutral800;
 	color: $colorNeutral100;
 	border-radius: .4rem;
