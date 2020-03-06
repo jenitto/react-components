@@ -53,7 +53,7 @@ $compName: 'sftk-table-cell-header';
 		}
 
 		&:valid ~ .#{$compName}__input-icon {
-				opacity: 1;
+			opacity: 1;
 		}
 
 		&:focus ~ .#{$compName}__label,

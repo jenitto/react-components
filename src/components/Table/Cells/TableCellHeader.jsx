@@ -71,11 +71,13 @@ const TableCellHeader = ({ content, sort, sortable, searchable }) => {
 			<span className="sftk-table-cell-header__label">
 				{content}
 			</span>
-			<span className={`sftk-table-cell-header-icon ${SORT.ASC === newSort ? 'sftk-table-cell-header-icon--reverse' : ''}`}>
-				<ButtonIcon
-					icon={newSort ? iconArrowDown() : iconDoubleArrow()}
-					onClick={handleSort} />
-			</span>
+			{sortable
+				? <span className={`sftk-table-cell-header-icon ${SORT.ASC === newSort ? 'sftk-table-cell-header-icon--reverse' : ''}`}>
+					<ButtonIcon
+						icon={newSort ? iconArrowDown() : iconDoubleArrow()}
+						onClick={handleSort} />
+				</span>
+				: null}
 		</th>
 	)
 };
