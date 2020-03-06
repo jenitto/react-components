@@ -31,10 +31,6 @@ $compName: 'sftk-table';
 		vertical-align: middle;
 		padding: 0 1.6rem;
 
-		&--head {
-			background-color: $colorNeutral500;
-		}
-
 		&--normal {
 			&:nth-child(even){
 				background-color: $colorNeutral700;
@@ -44,6 +40,14 @@ $compName: 'sftk-table';
 				background-color: $colorNeutral600;
 			}
 		}
+	}
+
+	th.#{$compName}__cell {
+		background-color: $colorNeutral500;
+	// 	position: sticky;
+	// 	top: 0;
+	// 	z-index: 2;
+	// 	background-color: $colorNeutral500;
 	}
 
 	&__cell {
