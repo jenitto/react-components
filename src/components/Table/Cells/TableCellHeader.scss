@@ -23,7 +23,7 @@ $compName: 'sftk-table-cell-header';
 	&__input {
 		position: relative;
 		z-index: 4;
-		width: calc(100% - 5rem);
+		width: calc(100% - 2rem);
 		height: 100%;
 		font-size: 1.6rem;
 		line-height: 2.4rem;
@@ -74,7 +74,6 @@ $compName: 'sftk-table-cell-header';
 
 	&__placeholder {
 		color: #B5B5B5;
-		position: absolute;
 		transition: 0.3s ease all;
 		position: absolute;
 		left: 1.6rem;

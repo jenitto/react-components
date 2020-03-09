@@ -4,6 +4,7 @@ import TableCell from './Cells/TableCell';
 import TableCellHeader from './Cells/TableCellHeader';
 import Checkbox from '../Checkboxes/Checkbox/Checkbox';
 import TableFooter from './Footer/TableFooter';
+import TableHeader from './Header/TableHeader';
 import { SORT } from '../../enums/sort';
 
 const Table = ({ columns, data, selected, check = false, sort, search, size, sizes, page, total, changeSelected, changeSelectedAll, changeSort, changeSize, changePage, changeSearchValue }) => {
@@ -15,6 +16,8 @@ const Table = ({ columns, data, selected, check = false, sort, search, size, siz
 
 	return (
 		<div className="sftk-table">
+			<TableHeader
+				totalSelected={selected.length}></TableHeader>
 			<div className="sftk-table__table-wrapper">
 				<table className="sftk-table__table">
 					<thead className="sftk-table__head">

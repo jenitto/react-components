@@ -1,0 +1,39 @@
+$compName: 'sftk-table-header';
+
+.#{$compName} {
+	display: table;
+	width: 100%;
+	background-color: $colorNeutral700;
+
+	&__container {
+		display: table-cell;
+		box-sizing: border-box;
+		vertical-align: middle;
+		height: 5.6rem;
+
+		&--left {
+			text-align: left;
+		}
+	
+		&--right {
+			text-align: right;
+		}
+
+	}
+
+	&__button-principal {
+		margin: 0;
+	}
+
+	&__chip {
+		color: $colorInfo200;
+		font-size: 1.6rem;
+		line-height: 2.4rem;
+		background: $colorNeutral600;
+		padding: .2rem .8rem;
+		border-radius: 4px;
+		margin-left: 2.8rem;
+	}
+	
+}
+	

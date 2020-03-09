@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ type, label, hasRipple, disabled, isLoading, onClick }) => (
+const Button = ({ type, label, hasRipple, disabled, isLoading, className = '', onClick }) => (
 	<button
-		className={`sftk-button ${type} ${hasRipple ? 'ripple' : ''} ${isLoading ? 'loading' : ''}`}
+		className={`sftk-button ${type} ${hasRipple ? 'ripple' : ''} ${isLoading ? 'loading' : ''} ${className}`}
 		disabled={disabled || isLoading}
 		onClick={onClick}>
 		<span className="sftk-button__label">{label}</span>
