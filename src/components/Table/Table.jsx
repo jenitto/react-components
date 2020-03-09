@@ -6,7 +6,7 @@ import Checkbox from '../Checkboxes/Checkbox/Checkbox';
 import TableFooter from './Footer/TableFooter';
 import { SORT } from '../../enums/sort';
 
-const Table = ({ columns, data, selected, check = false, sort, size, sizes, page, total, changeSelected, changeSelectedAll, changeSort, changeSize, changePage }) => {
+const Table = ({ columns, data, selected, check = false, sort, search, size, sizes, page, total, changeSelected, changeSelectedAll, changeSort, changeSize, changePage, changeSearchValue }) => {
 	const handleRowClick = (item) => {
 		if (check) {
 			changeSelected(item);
@@ -35,9 +35,11 @@ const Table = ({ columns, data, selected, check = false, sort, size, sizes, page
 									content={column.label}
 									value={column.id}
 									sort={sort}
-									changeSort={changeSort}
 									sortable={column.sortable}
-									searchable={column.searchable} />
+									searchable={column.searchable}
+									search={search}
+									changeSort={changeSort}
+									changeSearchValue={changeSearchValue} />
 							))}
 						</tr>
 					</thead>
@@ -86,6 +88,10 @@ Table.propTypes = {
 		active: PropTypes.string,
 		direction: PropTypes.oneOf([SORT.ASC, SORT.DESC])
 	}),
+	search: PropTypes.shape({
+		active: PropTypes.string,
+		term: PropTypes.string,
+	}),
 	size: PropTypes.number.isRequired,
 	sizes: PropTypes.array.isRequired,
 	page: PropTypes.number.isRequired,
@@ -95,6 +101,7 @@ Table.propTypes = {
 	changeSort: PropTypes.func,
 	changeSize: PropTypes.func,
 	changePage: PropTypes.func,
+	changeSearchValue: PropTypes.func,
 };
 
 export default Table;

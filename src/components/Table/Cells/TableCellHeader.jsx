@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import ButtonIcon from '../../Buttons/ButtonIcon';
 import { SORT } from '../../../enums/sort';
 
-const TableCellHeader = ({ content, value, sort, sortable, searchable, changeSort }) => {
+const TableCellHeader = ({ content, value, sort, sortable, searchable, search, changeSort, changeSearchValue }) => {
 
-	const [inputValue, setInputValue] = useState('');
 	const [focus, setFocus] = useState(false);
 
 	const handleSort = () => {
@@ -17,6 +16,10 @@ const TableCellHeader = ({ content, value, sort, sortable, searchable, changeSor
 		}
 		changeSort({ active: value, direction: direction });
 	};
+
+	const handleInputValue = (term) => {
+		changeSearchValue({ active: term ? value : '', term: term });
+	}
 
 	const iconDoubleArrow = () => (
 		<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,12 +61,12 @@ const TableCellHeader = ({ content, value, sort, sortable, searchable, changeSor
 				type="text"
 				required
 				disabled={!searchable}
-				value={inputValue}
-				onChange={(e) => setInputValue(e.target.value)}
+				value={search.active === value ? search.term : ''}
+				onChange={(e) => handleInputValue(e.target.value)}
 				onFocus={() => setFocus(true)}
 				onBlur={() => setFocus(false)} />
 			<span className="sftk-table-cell-header__input-icon"
-				onClick={() => setInputValue('')}>
+				onClick={() => handleInputValue('')}>
 				{iconCross()}
 			</span>
 			<span className="sftk-table-cell-header__label">
@@ -86,8 +89,13 @@ TableCellHeader.propTypes = {
 		active: PropTypes.string,
 		direction: PropTypes.oneOf([SORT.ASC, SORT.DESC])
 	}),
+	search: PropTypes.shape({
+		active: PropTypes.string,
+		term: PropTypes.string,
+	}),
 	sortable: PropTypes.bool,
 	changeSort: PropTypes.func,
+	changeSearchValue: PropTypes.func,
 };
 
 export default TableCellHeader;
