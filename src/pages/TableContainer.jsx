@@ -3,9 +3,11 @@ import Table from '../components/Table/Table';
 import { users } from '../database/users';
 import Chip from '../components/Chip/Chip';
 import TableAvatar from '../components/Table/Avatar/TableAvatar';
+import { SORT } from '../enums/sort';
 
 const TableContainer = () => {
-	const sizes = [20, 50, 100]
+	const sizes = [20, 50, 100];
+
 	const columns = [
 		{
 			label: 'Nombre',
@@ -50,6 +52,7 @@ const TableContainer = () => {
 	const [selected, setSelected] = useState([]);
 	const [page, setPage] = useState(1);
 	const [size, setSize] = useState(sizes[0]);
+	const [sort, setSort] = useState({ active: 'name', direction: SORT.ASC });
 
 	const changeSelected = (item) => {
 		if (selected.find((a) => a.id === item.id)) {
@@ -94,12 +97,14 @@ const TableContainer = () => {
 					data={data}
 					selected={selected}
 					check={true}
+					sort={sort}
 					size={size}
 					sizes={sizes}
 					page={page}
 					total={200}
 					changeSelected={changeSelected}
 					changeSelectedAll={changeSelectedAll}
+					changeSort={setSort}
 					changeSize={(e) => { setSize(e); setPage(1) }}
 					changePage={(e) => setPage(e)}>
 				</Table>

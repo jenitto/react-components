@@ -4,8 +4,9 @@ import TableCell from './Cells/TableCell';
 import TableCellHeader from './Cells/TableCellHeader';
 import Checkbox from '../Checkboxes/Checkbox/Checkbox';
 import TableFooter from './Footer/TableFooter';
+import { SORT } from '../../enums/sort';
 
-const Table = ({ columns, data, selected, check = false, size, sizes, page, total, changeSelected, changeSelectedAll, changeSize, changePage }) => {
+const Table = ({ columns, data, selected, check = false, sort, size, sizes, page, total, changeSelected, changeSelectedAll, changeSort, changeSize, changePage }) => {
 	const handleRowClick = (item) => {
 		if (check) {
 			changeSelected(item);
@@ -32,6 +33,9 @@ const Table = ({ columns, data, selected, check = false, size, sizes, page, tota
 								<TableCellHeader
 									key={column.id}
 									content={column.label}
+									value={column.id}
+									sort={sort}
+									changeSort={changeSort}
 									sortable={column.sortable}
 									searchable={column.searchable} />
 							))}
@@ -78,12 +82,17 @@ Table.propTypes = {
 	data: PropTypes.array.isRequired,
 	selected: PropTypes.array,
 	check: PropTypes.bool,
+	sort: PropTypes.shape({
+		active: PropTypes.string,
+		direction: PropTypes.oneOf([SORT.ASC, SORT.DESC])
+	}),
 	size: PropTypes.number.isRequired,
 	sizes: PropTypes.array.isRequired,
 	page: PropTypes.number.isRequired,
 	total: PropTypes.number.isRequired,
 	changeSelected: PropTypes.func,
 	changeSelectedAll: PropTypes.func,
+	changeSort: PropTypes.func,
 	changeSize: PropTypes.func,
 	changePage: PropTypes.func,
 };

@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../../Buttons/ButtonIcon';
+import { SORT } from '../../../enums/sort';
 
-const SORT = {
-	ASC: 'asc',
-	DESC: 'desc',
-}
-
-const TableCellHeader = ({ content, sort, sortable, searchable }) => {
+const TableCellHeader = ({ content, value, sort, sortable, searchable, changeSort }) => {
 
 	const [inputValue, setInputValue] = useState('');
-	const [newSort, setSort] = useState(sort);
 	const [focus, setFocus] = useState(false);
 
 	const handleSort = () => {
-		SORT.ASC === newSort
-			? setSort(SORT.DESC)
-			: setSort(SORT.ASC)
+		let direction;
+		if (sort.active === value && sort.direction === SORT.ASC) {
+			direction = SORT.DESC;
+		} else {
+			direction = SORT.ASC;
+		}
+		changeSort({ active: value, direction: direction });
 	};
 
 	const iconDoubleArrow = () => (
@@ -51,11 +50,10 @@ const TableCellHeader = ({ content, sort, sortable, searchable }) => {
 				<path d="M4 4H20V20H4V4Z" fill="#FCDD82" />
 			</g>
 		</svg>
-
 	);
 
 	return (
-		<th className={`sftk-table__cell sftk-table-cell-header ${newSort ? 'visible' : ''} ${!sortable ? 'disabled' : ''} ${focus ? 'focus' : ''}`}>
+		<th className={`sftk-table__cell sftk-table-cell-header ${sort.active === value ? 'visible' : ''} ${!sortable ? 'disabled' : ''} ${focus ? 'focus' : ''}`}>
 			<input className="sftk-table-cell-header__input"
 				type="text"
 				required
@@ -72,9 +70,9 @@ const TableCellHeader = ({ content, sort, sortable, searchable }) => {
 				{content}
 			</span>
 			{sortable
-				? <span className={`sftk-table-cell-header-icon ${SORT.ASC === newSort ? 'sftk-table-cell-header-icon--reverse' : ''}`}>
+				? <span className={`sftk-table-cell-header-icon ${(SORT.DESC === sort.direction) ? 'sftk-table-cell-header-icon--reverse' : ''}`}>
 					<ButtonIcon
-						icon={newSort ? iconArrowDown() : iconDoubleArrow()}
+						icon={sort.active === value ? iconArrowDown() : iconDoubleArrow()}
 						onClick={handleSort} />
 				</span>
 				: null}
@@ -84,8 +82,12 @@ const TableCellHeader = ({ content, sort, sortable, searchable }) => {
 
 TableCellHeader.propTypes = {
 	content: PropTypes.any.isRequired,
-	sort: PropTypes.oneOf([SORT.ASC, SORT.DESC]),
+	sort: PropTypes.shape({
+		active: PropTypes.string,
+		direction: PropTypes.oneOf([SORT.ASC, SORT.DESC])
+	}),
 	sortable: PropTypes.bool,
+	changeSort: PropTypes.func,
 };
 
 export default TableCellHeader;
