@@ -5,7 +5,13 @@ import TableCellHeader from './Cells/TableCellHeader';
 import Checkbox from '../Checkboxes/Checkbox/Checkbox';
 import TableFooter from './Footer/TableFooter';
 
-const Table = ({ columns, data, check = false }) => {
+const Table = ({ columns, data, selected, check = false, size, page, total, changeSelected, changeSelectedAll }) => {
+	const handleRowClick = (item) => {
+		if (check) {
+			changeSelected(item);
+		}
+	}
+
 	return (
 		<div className="sftk-table">
 			<div className="sftk-table__table-wrapper">
@@ -16,8 +22,9 @@ const Table = ({ columns, data, check = false }) => {
 								<th className="sftk-table__cell">
 									<Checkbox
 										value={'all'}
-										checked={true}
-										setChecked={(e) => console.log(e)}>
+										checked={selected.length > 0 && selected.length === data.length}
+										indeterminate={selected.length > 0 && selected.length < data.length}
+										setChecked={() => changeSelectedAll()}>
 									</Checkbox>
 								</th>
 								: null}
@@ -34,13 +41,14 @@ const Table = ({ columns, data, check = false }) => {
 						{data.map((row) => (
 							<tr
 								key={row.id}
-								className="sftk-table__row sftk-table__row--normal">
+								className={`sftk-table__row sftk-table__row--normal ${check ? 'checkable' : ''}`}
+								onClick={() => handleRowClick(row)}>
 								{check ?
 									<td className="sftk-table__cell">
 										<Checkbox
 											value={row.id}
-											checked={true}
-											setChecked={(e) => console.log(e)}>
+											checked={!!selected.find((item) => row.id === item.id)}
+											setChecked={() => changeSelected(row)}>
 										</Checkbox>
 									</td>
 									: null}
@@ -55,16 +63,21 @@ const Table = ({ columns, data, check = false }) => {
 				</table>
 			</div>
 			<TableFooter
-				size={20}
-				page={1}
-				total={200}></TableFooter>
+				size={size}
+				page={page}
+				total={total}></TableFooter>
 		</div>
 	)
 };
 
 Table.propTypes = {
 	columns: PropTypes.array.isRequired,
-	data: PropTypes.array.isRequired
+	data: PropTypes.array.isRequired,
+	selected: PropTypes.array,
+	check: PropTypes.bool,
+	size: PropTypes.number.isRequired,
+	page: PropTypes.number.isRequired,
+	total: PropTypes.number.isRequired,
 };
 
 export default Table;

@@ -39,8 +39,15 @@ $compName: 'sftk-table';
 			&:nth-child(odd){
 				background-color: $colorNeutral600;
 			}
+
+			&:hover.checkable {
+				cursor: pointer;
+				background-color: $colorNeutral500;
+			}
 		}
+		
 	}
+
 
 	th.#{$compName}__cell {
 		background-color: $colorNeutral500;

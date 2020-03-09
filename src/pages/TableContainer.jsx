@@ -46,6 +46,23 @@ const TableContainer = () => {
 	];
 
 	const [data, setData] = useState([]);
+	const [selected, setSelected] = useState([]);
+
+	const changeSelected = (item) => {
+		if (selected.find((a) => a.id === item.id)) {
+			setSelected(selected.filter((a) => a.id !== item.id));
+		} else {
+			setSelected([...selected, item]);
+		}
+	}
+
+	const changeSelectedAll = () => {
+		if (selected.length === data.length) {
+			setSelected([]);
+		} else {
+			setSelected([...data]);
+		}
+	}
 
 	useEffect(() => {
 		const colors = { ok: '#73C480', error: '#E43E42', warning: '#FBD24F' };
@@ -72,7 +89,13 @@ const TableContainer = () => {
 				<Table
 					columns={columns}
 					data={data}
-					check={true}>
+					selected={selected}
+					check={true}
+					size={20}
+					page={1}
+					total={200}
+					changeSelected={changeSelected}
+					changeSelectedAll={changeSelectedAll}>
 				</Table>
 			</div>
 		</Fragment>
