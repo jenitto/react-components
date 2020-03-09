@@ -1,6 +1,7 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import useOutsideClick from '../../../hooks/useOutsideClick';
 
 const ARROW_KEY_UP = 'ArrowUp';
 const ARROW_KEY_DOWN = 'ArrowDown';
@@ -9,26 +10,11 @@ const ENTER_KEY = 'Enter';
 
 const Select = ({ name, placeholder, multiple, disabled, selectedOptions, options, message, onSelectionChange }) => {
 
-	const node = useRef();
+	const ref = useRef();
 	const [opened, setOpened] = useState(false);
 
-	const handleClickOutside = e => {
-		if (node.current.contains(e.target)) {
-			return;
-		}
+	useOutsideClick(ref, () => {
 		handleOpenSelect(false);
-	};
-
-	useEffect(() => {
-		if (opened) {
-			handleFocus(0);
-			document.addEventListener("mousedown", handleClickOutside);
-		} else {
-			document.removeEventListener("mousedown", handleClickOutside);
-		}
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
 	});
 
 	const handleKeyDownSelect = (e) => {
@@ -103,7 +89,7 @@ const Select = ({ name, placeholder, multiple, disabled, selectedOptions, option
 
 	return (
 		<div
-			ref={node}
+			ref={ref}
 			className={`sftk-select ${opened ? 'opened' : 'closed'} ${disabled ? 'disabled' : ''}`}>
 			<div
 				className={`sftk-select__selected sftk-select__selected--${message?.type} ${disabled ? 'disabled' : ''}`}

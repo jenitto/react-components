@@ -97,7 +97,6 @@ const TableContainer = () => {
 		setSearch(searchEvent);
 	}
 
-
 	const renderChip = (label, color) => <Chip label={label} color={color} />;
 	const renderAvatar = (label, image) => <TableAvatar name={label} image={image} />
 
