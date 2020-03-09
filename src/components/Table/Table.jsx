@@ -5,7 +5,7 @@ import TableCellHeader from './Cells/TableCellHeader';
 import Checkbox from '../Checkboxes/Checkbox/Checkbox';
 import TableFooter from './Footer/TableFooter';
 
-const Table = ({ columns, data, selected, check = false, size, page, total, changeSelected, changeSelectedAll }) => {
+const Table = ({ columns, data, selected, check = false, size, sizes, page, total, changeSelected, changeSelectedAll, changeSize, changePage }) => {
 	const handleRowClick = (item) => {
 		if (check) {
 			changeSelected(item);
@@ -64,8 +64,11 @@ const Table = ({ columns, data, selected, check = false, size, page, total, chan
 			</div>
 			<TableFooter
 				size={size}
+				sizes={sizes}
 				page={page}
-				total={total}></TableFooter>
+				total={total}
+				changePage={changePage}
+				changeSize={changeSize}></TableFooter>
 		</div>
 	)
 };
@@ -76,8 +79,13 @@ Table.propTypes = {
 	selected: PropTypes.array,
 	check: PropTypes.bool,
 	size: PropTypes.number.isRequired,
+	sizes: PropTypes.array.isRequired,
 	page: PropTypes.number.isRequired,
 	total: PropTypes.number.isRequired,
+	changeSelected: PropTypes.func,
+	changeSelectedAll: PropTypes.func,
+	changeSize: PropTypes.func,
+	changePage: PropTypes.func,
 };
 
 export default Table;

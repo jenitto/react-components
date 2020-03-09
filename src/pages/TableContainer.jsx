@@ -5,6 +5,7 @@ import Chip from '../components/Chip/Chip';
 import TableAvatar from '../components/Table/Avatar/TableAvatar';
 
 const TableContainer = () => {
+	const sizes = [20, 50, 100]
 	const columns = [
 		{
 			label: 'Nombre',
@@ -47,6 +48,8 @@ const TableContainer = () => {
 
 	const [data, setData] = useState([]);
 	const [selected, setSelected] = useState([]);
+	const [page, setPage] = useState(1);
+	const [size, setSize] = useState(sizes[0]);
 
 	const changeSelected = (item) => {
 		if (selected.find((a) => a.id === item.id)) {
@@ -91,11 +94,14 @@ const TableContainer = () => {
 					data={data}
 					selected={selected}
 					check={true}
-					size={20}
-					page={1}
+					size={size}
+					sizes={sizes}
+					page={page}
 					total={200}
 					changeSelected={changeSelected}
-					changeSelectedAll={changeSelectedAll}>
+					changeSelectedAll={changeSelectedAll}
+					changeSize={(e) => { setSize(e); setPage(1) }}
+					changePage={(e) => setPage(e)}>
 				</Table>
 			</div>
 		</Fragment>
