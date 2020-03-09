@@ -69,15 +69,21 @@ const TableCellHeader = ({ content, value, sort, sortable, searchable, search, c
 				onClick={() => handleInputValue('')}>
 				{iconCross()}
 			</span>
-			<span className="sftk-table-cell-header__label">
+			<span className="sftk-table-cell-header__label sftk-table-cell-header__placeholder">
 				{content}
 			</span>
 			{sortable
-				? <span className={`sftk-table-cell-header-icon ${(SORT.DESC === sort.direction) ? 'sftk-table-cell-header-icon--reverse' : ''}`}>
-					<ButtonIcon
-						icon={sort.active === value ? iconArrowDown() : iconDoubleArrow()}
-						onClick={handleSort} />
-				</span>
+				?
+				<div className="sftk-table-cell-header__button-container">
+					<span className="sftk-table-cell-header__label">
+						{content}
+					</span>
+					<span className={`sftk-table-cell-header__button ${(SORT.DESC === sort.direction) ? 'sftk-table-cell-header__button--reverse' : ''}`}>
+						<ButtonIcon
+							icon={sort.active === value ? iconArrowDown() : iconDoubleArrow()}
+							onClick={handleSort} />
+					</span>
+				</div>
 				: null}
 		</th>
 	)

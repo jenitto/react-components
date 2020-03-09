@@ -10,7 +10,7 @@ $compName: 'sftk-table-cell-header';
 
 	&:hover:not(.disabled),
 	&.visible {
-		.#{$compName}-icon {
+		.#{$compName}__button {
 			opacity: 1;
 		}
 	}
@@ -19,17 +19,10 @@ $compName: 'sftk-table-cell-header';
 		box-shadow: inset 0px -2px 0px $colorPrimary;
 	}
 
-	&-icon {
-		margin-left: .8rem;
-		opacity: 0;
-		display: inline-block;
-
-		&--reverse {
-			transform: scaleY(-1);
-		}
-	}
 
 	&__input {
+		position: relative;
+		z-index: 4;
 		width: calc(100% - 5rem);
 		height: 100%;
 		font-size: 1.6rem;
@@ -56,8 +49,8 @@ $compName: 'sftk-table-cell-header';
 			opacity: 1;
 		}
 
-		&:focus ~ .#{$compName}__label,
-		&:valid ~ .#{$compName}__label {
+		&:focus ~ .#{$compName}__placeholder,
+		&:valid ~ .#{$compName}__placeholder {
 			color: $colorPrimary;
 			font-size: 1.3rem;
 			font-weight: normal;
@@ -73,15 +66,45 @@ $compName: 'sftk-table-cell-header';
 	}
 
 	&__label {
-		color: #B5B5B5;
 		font-size: 1.6rem;
-		position: absolute;
 		pointer-events: none;
-		left: 1.6rem;
-		top: 1.4rem;
 		line-height: 2.4rem;
-		transition: 0.3s ease all;
 		user-select: none;
 	}
 
+	&__placeholder {
+		color: #B5B5B5;
+		position: absolute;
+		transition: 0.3s ease all;
+		position: absolute;
+		left: 1.6rem;
+		top: 1.4rem;
+	}
+
+	&__button-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		
+		& .#{$compName}__label {
+			display: inline-block;
+			padding-left: 1.6rem;
+			padding-top: 1.4rem;
+			opacity: 0;
+			visibility: hidden;
+			z-index: 0;
+		}
+	}
+
+	&__button {
+		margin-left: .8rem;
+		opacity: 0;
+		display: inline-block;
+		z-index: 9;
+    position: relative;
+
+		&--reverse {
+			transform: scaleY(-1);
+		}
+	}
 }
