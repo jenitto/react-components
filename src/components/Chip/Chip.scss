@@ -17,10 +17,12 @@ $compName: 'sftk-chip';
 		margin-right: .6rem;
 		background-color: $colorNeutral100;
 		position: relative;
+		vertical-align: middle;
 	}
 
 	&__label {
 		font-size: 1.6rem;
 		line-height: 2.4rem;
+		vertical-align: middle;
 	}
 }

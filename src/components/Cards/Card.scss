@@ -1,0 +1,100 @@
+@import './Card-Checkbox/Card-Checkbox.scss';
+
+$compName: 'sftk-card';
+
+.#{$compName} {
+	display: block;
+	position: relative;
+	height: 10.4rem;
+	min-height: 10.4rem;
+	max-height: 10.4rem;
+	background-color: $colorNeutral700;
+	box-shadow: none;
+	box-sizing: border-box;
+	transition: .1s ease;
+
+	&:hover:not(.disabled) {
+		cursor: pointer;
+		background-color: $colorNeutral500;
+	}
+
+	&.checked {
+		outline: 1px solid #FDEBB3;
+		box-shadow: $boxShadow;
+	}
+
+	&.disabled {
+		opacity: 0.5;
+	}
+
+	&__cover {
+		float: left;
+		width: 10.4rem;
+    height: 10.4rem;
+    line-height: 9.6rem;
+		text-align: center;
+		background-color: $colorNeutral900;
+		box-sizing: border-box;
+		color: $colorPrimary;
+		border: 4px solid $colorNeutral600;
+	}
+	
+	&__abbr {
+		@include truncate;
+		font-size: 4.9rem;
+		vertical-align: middle;
+	}
+
+	&__image {
+		height: 6.4rem;
+		width: 6.4rem;
+		border-radius: 50%;
+		object-fit: cover;
+		vertical-align: middle;
+	}
+
+	&__body {
+		position: relative;
+		height: 10.4rem;
+		box-sizing: border-box;
+    float: left;
+		width: calc(100% - 10.4rem);
+		border: 4px solid $colorNeutral600;
+		border-left: none;
+
+		&-wrapper {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+			padding: 0 2rem;
+			box-sizing: border-box;
+		}
+	}
+
+	&__title {
+		@include truncate;
+		font-size: 16px;
+		line-height: 24px;
+		color: $colorNeutral50;
+		padding-right: 1.5rem;
+
+		&--bold {
+			font-weight: bold;
+		}
+	}
+
+	&__subtitle {
+		@include truncate;
+		font-size: 16px;
+		line-height: 24px;
+		color: $colorNeutral100;
+	}
+
+	&__button {
+		position: absolute;
+    right: 0;
+    top: 0;
+	}
+
+}

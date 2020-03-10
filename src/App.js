@@ -6,17 +6,19 @@ import InputsContainer from './pages/InputsContainer';
 import RadiosContainer from './pages/RadiosContainer';
 import SelectsContainer from './pages/SelectsContainer';
 import TableContainer from './pages/TableContainer';
+import CardsContainer from './pages/CardsContainer';
 
 function App() {
 	return (
 		<Fragment>
-			<TableContainer></TableContainer>
-			<InputsContainer></InputsContainer>
-			<SelectsContainer></SelectsContainer>
-			<RadiosContainer></RadiosContainer>
-			<CheckboxContainer></CheckboxContainer>
-			<SwitchsContainer></SwitchsContainer>
-			<ButtonsContainer></ButtonsContainer>
+			<CardsContainer />
+			<TableContainer />
+			<InputsContainer />
+			<SelectsContainer />
+			<RadiosContainer />
+			<CheckboxContainer />
+			<SwitchsContainer />
+			<ButtonsContainer />
 		</Fragment >
 	);
 }
