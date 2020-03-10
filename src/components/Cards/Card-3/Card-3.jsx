@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CardCheckbox from '../Card-Checkbox/Card-Checkbox';
-import Chip from '../../Chip/Chip';
 
-const Card2 = ({ className = '', title, subtitle, image, chipLabel, selectable = true, disabled, checked, setChecked }) => {
+const Card3 = ({ className = '', title, subtitle, description, abbr, selectable = true, checked, disabled, setChecked }) => {
 
 	const handleSelected = () => {
 		if (!disabled && selectable) {
@@ -11,24 +10,20 @@ const Card2 = ({ className = '', title, subtitle, image, chipLabel, selectable =
 		}
 	}
 
-	const getAbbr = (str) => str.match(/\b(\w)/g).join('').slice(0, 2);
+	const getAbbr = (str) => abbr || str.replace(/\s/g, '').slice(0, 2);
 
 	return (
 		<div
 			className={`sftk-card ${className} ${checked ? 'checked' : ''} ${selectable ? 'selectable' : ''} ${disabled ? 'disabled' : ''}`}
 			onClick={handleSelected}>
 			<div className="sftk-card__cover">
-				{image
-					? <img className="sftk-card__image" alt={title} src={image} />
-					: <div className="sftk-card__abbr">{getAbbr(title)}</div>
-				}
-
+				<div className="sftk-card__abbr">{getAbbr(title)}</div>
 			</div>
 			<div className="sftk-card__body">
 				<div className="sftk-card__body-wrapper">
-					<Chip label={chipLabel} color="#85D2F3"></Chip>
-					<div className="sftk-card__title">{title}</div>
-					<div className="sftk-card__subtitle">{subtitle}</div>
+					<div className="sftk-card__title sftk-card__title--bold">{title}</div>
+					<div className="sftk-card__title">{subtitle}</div>
+					<div className="sftk-card__subtitle">{description}</div>
 				</div>
 				{selectable ?
 					<div className="sftk-card__button">
@@ -43,7 +38,7 @@ const Card2 = ({ className = '', title, subtitle, image, chipLabel, selectable =
 	)
 };
 
-Card2.propTypes = {
+Card3.propTypes = {
 	/**
 	* Clases CSS adicionales para la card.
 	*/
@@ -57,13 +52,13 @@ Card2.propTypes = {
 	*/
 	subtitle: PropTypes.string.isRequired,
 	/**
-	 * Url de la imagen
-	 */
-	image: PropTypes.string,
-	/**
-	* Label del chip
+	* Descripcion de la card
 	*/
-	chipLabel: PropTypes.string,
+	description: PropTypes.string.isRequired,
+	/**
+	 * Abreviatura de la card
+	 */
+	abbr: PropTypes.string,
 	/**
 	 * True si la card es seleccionable
 	 */
@@ -82,4 +77,4 @@ Card2.propTypes = {
 	setChecked: PropTypes.func,
 };
 
-export default Card2;
+export default Card3;

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Card1 from '../components/Cards/Card-1/Card-1';
 import Card2 from '../components/Cards/Card-2/Card-2';
 import { users } from '../database/users';
+import Card3 from '../components/Cards/Card-3/Card-3';
 
 const CardsContainer = () => {
 
@@ -96,7 +97,21 @@ const CardsContainer = () => {
 				</div>
 				<div className="column">
 					<div className="title">Cards</div>
-
+					{cards2.map((card) =>
+						<div
+							style={{ margin: '2rem' }}
+							key={`card2-${card.id}`}>
+							<Card3
+								title={`${card.name} ${card.surname}`}
+								subtitle={card.name}
+								description={card.description}
+								image={card.avatar}
+								selectable={card.selectable}
+								disabled={card.disabled}
+								checked={!!selected2.find((item) => item.id === card.id)}
+								setChecked={() => changeSelected2(card)} />
+						</div>
+					)}
 				</div>
 			</div>
 		</Fragment>

@@ -13,7 +13,7 @@ $compName: 'sftk-card';
 	box-sizing: border-box;
 	transition: .1s ease;
 
-	&:hover:not(.disabled) {
+	&:hover.selectable:not(.disabled) {
 		cursor: pointer;
 		background-color: $colorNeutral500;
 	}

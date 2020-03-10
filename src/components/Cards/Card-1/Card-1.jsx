@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CardCheckbox from '../Card-Checkbox/Card-Checkbox';
 
-const Card1 = ({ className = '', title, subtitle, abbr, selectable, checked, disabled, setChecked }) => {
+const Card1 = ({ className = '', title, subtitle, abbr, selectable = true, checked, disabled, setChecked }) => {
 
 	const handleSelected = () => {
 		if (!disabled && selectable) {
