@@ -31,7 +31,9 @@ const Card2 = ({ className = '', title, subtitle, image, chipLabel, selectable =
 					<div className="sftk-card__subtitle">{subtitle}</div>
 				</div>
 				{selectable ?
-					<div className="sftk-card__button">
+					<div
+						className="sftk-card__button"
+						onClick={(e) => e.stopPropagation()}>
 						<CardCheckbox
 							checked={checked}
 							disabled={disabled}

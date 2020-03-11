@@ -3,6 +3,7 @@ import Card1 from '../components/Cards/Card-1/Card-1';
 import Card2 from '../components/Cards/Card-2/Card-2';
 import { users } from '../database/users';
 import Card3 from '../components/Cards/Card-3/Card-3';
+import Card4 from '../components/Cards/Card-4/Card-4';
 
 const CardsContainer = () => {
 
@@ -38,11 +39,36 @@ const CardsContainer = () => {
 		}
 	];
 
+	const cards4 = [
+		{
+			id: 1,
+			timeBefore: new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)).toLocaleString(),
+			timeAfter: new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)).toLocaleString(),
+		},
+		{
+			id: 2,
+			timeBefore: new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)).toLocaleString(),
+			timeAfter: new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)).toLocaleString(),
+		},
+		{
+			id: 3,
+			timeBefore: new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)).toLocaleString(),
+			timeAfter: new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)).toLocaleString(),
+		},
+		{
+			id: 4,
+			timeBefore: new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)).toLocaleString(),
+			timeAfter: new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)).toLocaleString(),
+			disabled: true
+		}
+	];
+
 	const cards2 = users.map((user) => {
 		return { ...user, status: 'Coordinador' }
 	});
 
 	const changeSelected1 = (item) => {
+		console.log(1);
 		changeSelected(item, selected1, setSelected1);
 	}
 
@@ -96,7 +122,7 @@ const CardsContainer = () => {
 					)}
 				</div>
 				<div className="column">
-					<div className="title">Cards</div>
+					<div className="title">Card 3</div>
 					{cards2.map((card) =>
 						<div
 							style={{ margin: '2rem' }}
@@ -110,6 +136,18 @@ const CardsContainer = () => {
 								disabled={card.disabled}
 								checked={!!selected2.find((item) => item.id === card.id)}
 								setChecked={() => changeSelected2(card)} />
+						</div>
+					)}
+					<div className="title">Card 4</div>
+					{cards4.map((card) =>
+						<div
+							style={{ margin: '2rem' }}
+							key={`card2-${card.id}`}>
+							<Card4
+								timeBefore={card.timeBefore}
+								timeAfter={card.timeAfter}
+								disabled={card.disabled}
+								setChecked={() => console.log(card)} />
 						</div>
 					)}
 				</div>
