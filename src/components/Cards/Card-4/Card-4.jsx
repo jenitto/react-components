@@ -30,7 +30,7 @@ const Card4 = ({ className = '', timeBefore, timeAfter, disabled, setChecked }) 
 			<div className="sftk-card__body">
 				<div className="sftk-card__body-wrapper">
 					<div className="sftk-card__title">De: {dateBefore.toLocaleDateString(LANG)} a las {dateBefore.toLocaleTimeString('es')}</div>
-					<div className="sftk-card__subtitle">De: {dateAfter.toLocaleDateString(LANG)} a las {dateAfter.toLocaleTimeString('es')}</div>
+					<div className="sftk-card__subtitle">A: {dateAfter.toLocaleDateString(LANG)} a las {dateAfter.toLocaleTimeString('es')}</div>
 				</div>
 				{!disabled ?
 					<div
