@@ -1,73 +1,67 @@
-$compName: 'sftk-card-checkbox';
+$compName: 'card-checkbox';
 
 .#{$compName} {
-    position: relative;
+    box-sizing: border-box;
     display: inline-block;
-    cursor: pointer;
+    position: relative;
+    width: 20px;
+    height: 20px;
 
-    &.disabled {
-        cursor: default;
+    &:hover:not(.disabled) {
+        cursor: pointer;
+    }
+
+    &.checked .#{$compName}__circle--inner {
+        transform: scale(0.6);
+        background-color: $colorPrimary;
+    }
+
+    &.checked .#{$compName}__circle--outer,
+    &:hover:not(.disabled) .#{$compName}__circle--outer,
+    &.focused .#{$compName}__circle--outer {
+        border-color: $colorPrimary;
+    }
+
+    &.disabled,
+    &:hover:not(.disabled)::after,
+    &.focused::after {
         opacity: 0.5;
     }
 
-    &--checked .#{$compName}__button,
-    &:hover:not(.disabled) .#{$compName}__button,
-    &.focused .#{$compName}__button {
-        box-shadow: 0 0 0 0.2rem $colorPrimary;
-    }
-
-    &--checked .#{$compName}__button-icon {
-        height: 1.3rem;
-        width: 1.3rem;
-    }
-
-    &:hover:not(.disabled) .#{$compName}__button-container::after,
-    &.focused .#{$compName}__button-container::after {
-        opacity: 0.5;
-    }
-
-    &__button-container {
-        position: relative;
-        display: inline-block;
-
-        &::after {
-            content: '';
-            position: absolute;
-            height: 4rem;
-            width: 4rem;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #404040;
-            opacity: 0;
-            transition: 0.3s ease;
-        }
-    }
-
-    &__button {
-        box-shadow: 0 0 0 0.2rem $colorNeutral50;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        display: inline-block;
-        position: relative;
+    &__circle {
         box-sizing: border-box;
-        vertical-align: middle;
+        height: 20px;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        position: absolute;
+        width: 20px;
         z-index: 1;
 
-        &-icon {
-            border-radius: 50%;
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            height: 0;
-            width: 0;
-            background-color: $colorPrimary;
-            transition: 0.1s ease;
+        &--outer {
+            transition: border-color ease 280ms;
+            border-width: 2px;
+            border-style: solid;
         }
+
+        &--inner {
+            transition: transform ease 280ms, background-color ease 280ms;
+            transform: scale(0);
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #404040;
+        opacity: 0;
+        transition: 0.3s ease;
     }
 
     &__input {
