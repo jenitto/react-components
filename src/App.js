@@ -11,14 +11,14 @@ import CardsContainer from './pages/CardsContainer';
 function App() {
 	return (
 		<Fragment>
-			<CardsContainer />
-			<TableContainer />
-			<InputsContainer />
-			<SelectsContainer />
-			<RadiosContainer />
-			<CheckboxContainer />
-			<SwitchsContainer />
 			<ButtonsContainer />
+			<SwitchsContainer />
+			<RadiosContainer />
+			<SelectsContainer />
+			<InputsContainer />
+			<CheckboxContainer />
+			<TableContainer />
+			<CardsContainer />
 		</Fragment >
 	);
 }

@@ -18,9 +18,8 @@ const Card1 = ({ className = '', title, subtitle, abbr, selectable = true, check
 
     return (
         <div
-            className={`sftk-card ${className} ${checked ? 'checked' : ''} ${selectable ? 'selectable' : ''} ${
-                disabled ? 'disabled' : ''
-            }`}
+            className={`sftk-card ${className} ${checked ? 'checked' : ''} ${selectable ? 'selectable' : ''} ${disabled ? 'disabled' : ''
+                }`}
             onClick={handleSelected}
         >
             <div className='sftk-card__cover'>

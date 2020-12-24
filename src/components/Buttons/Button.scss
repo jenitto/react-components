@@ -1,93 +1,92 @@
 $compName: 'sftk-button';
 
 .#{$compName} {
-	position: relative;
-	display: inline-flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	margin: 1rem 3rem;
-	padding: 1.2rem 2.4rem;
-	min-width: 1.6rem;
-	height: 5.6rem;
-	transition: background-color 0.3s ease;
-	border: 0;
-	outline: none;
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 3rem;
+    padding: 1.2rem 2.4rem;
+    min-width: 1.6rem;
+    height: 5.6rem;
+    transition: background-color 0.3s ease;
+    border: 0;
+    outline: none;
 
-	&:hover:not(:disabled) {
-		cursor: pointer;
+    &:hover:not(:disabled) {
+        cursor: pointer;
 
-		& .#{$compName}__icon {
-			transform: translateX(.2rem);
-		}
-	}
+        & .#{$compName}__icon {
+            transform: translateX(0.2rem);
+        }
+    }
 
-	&:disabled {
-		opacity: 0.5;
-	}
+    &:disabled {
+        opacity: 0.5;
+    }
 
-	&:focus {
-		outline: 1px solid #FFF;
-		box-shadow: $boxShadow;
-	}
+    &:focus {
+        outline: 1px solid #fff;
+        box-shadow: $boxShadow;
+    }
 
-	&__label {
-		font-family: Inter;
-		font-style: normal;
-		font-weight: 600;
-		font-size: 1.6rem;
-		line-height: 2.4rem;
-		text-transform: uppercase;
-		margin-right: 3.6rem;
-		z-index: 1;
-	}
+    &__label {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        text-transform: uppercase;
+        margin-right: 3.6rem;
+        z-index: 1;
+    }
 
-	&__icon {
-		z-index: 1;
-		transition: transform 0.1s ease;
-	}
-	
-	&.loading .#{$compName}__icon {
-		animation: rotation 1s infinite linear;
-	}
+    &__icon {
+        z-index: 1;
+        transition: transform 0.1s ease;
+    }
 
-	&.primary {
-		background-color: $colorPrimary;
-		color: $colorNeutral900;
+    &.loading .#{$compName}__icon {
+        animation: rotation 1s infinite linear;
+    }
 
-		&:hover:not(:disabled) {
-			background-color: $colorSecondary;
-		}
+    &.primary {
+        background-color: $colorPrimary;
+        color: $colorNeutral900;
 
-		& .#{$compName}__icon path {
-			fill: #2E2E2E;
-		}
-	}
+        &:hover:not(:disabled) {
+            background-color: $colorSecondary;
+        }
 
-	&.secondary {
-		background-color: rgba(0,0,0,0);
-		color: #FFF;
-		outline: 1px solid #FFF;
-		transition: outline 0.3s ease;
+        & .#{$compName}__icon path {
+            fill: #2e2e2e;
+        }
+    }
 
-		&:hover:not(:disabled) {
-			outline: 1px solid  $colorPrimary;
-		}
+    &.secondary {
+        background-color: rgba(0, 0, 0, 0);
+        color: #fff;
+        outline: 1px solid #fff;
+        transition: outline 0.3s ease;
 
-		& .#{$compName}__icon path {
-			fill: #FFF;
-		}
+        &:hover:not(:disabled) {
+            outline: 1px solid $colorPrimary;
+        }
 
-		&:focus {
-			& .#{$compName}__label {
-				text-shadow: $textShadow
-			}
-		}
-	}
+        & .#{$compName}__icon path {
+            fill: #fff;
+        }
 
-	/*ripple effect*/
-	&.ripple:not(:disabled) {
-		@include rippleEffect;
-	}
-	
+        &:focus {
+            & .#{$compName}__label {
+                text-shadow: $textShadow;
+            }
+        }
+    }
+
+    /*ripple effect*/
+    &.ripple:not(:disabled) {
+        @include rippleEffect;
+    }
 }

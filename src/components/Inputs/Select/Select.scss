@@ -3,202 +3,201 @@ $compName: 'sftk-select';
 $optionHeight: 2.4rem;
 
 .#{$compName} {
-	position: relative;
-	width: 28rem;
+    position: relative;
+    width: 28rem;
 
-	&:not(.disabled) .#{$compName}__selected {
-		cursor: pointer;
-	}
-
-	&.disabled {
-		opacity: 0.5;
-	}
-
-	& select {
-		display: none; /*hide original SELECT element: */
-	}
-
-	&.opened {
-		.#{$compName}__select-icon {
-			transform: rotate(180deg);
-		}
-
-		.#{$compName}__placeholder {
-			color: $colorNeutral50;
-		}
-
-		.#{$compName}__name {
-			color: $colorSecondary;
-		}
-	}
-
-	&__selected {
-		position: relative;
-		background: #2E2E2E;
-		height: 5.6rem;
-		width: 100%;
-		box-sizing: border-box;
-		padding: .4rem 2rem .8rem 1.6rem;
-		outline: none;
-		border: .1rem solid transparent;
-		border-radius: 0;
-		border-bottom: .2rem solid #858585;
-		display: block;
-
-		&--success {
-			border-bottom-color: $colorSuccess;
-		}
-
-		&--error {
-			border-bottom-color: $colorError;
-		}
-
-		&:focus:not(.disabled) {
-			border-bottom-color: $colorSecondary;
-			outline: none;
-			box-shadow: $boxShadow;
-			border-top: .1rem solid $colorSecondary;
-			border-left: .1rem solid $colorSecondary;
-			border-right: .1rem solid $colorSecondary;
-		}
-
-		&:hover:not(.disabled),
-		&:focus:not(.disabled) {
-			border-bottom-color: $colorSecondary;
-
-			.#{$compName}__placeholder {
-				color: $colorNeutral50;
-			}
-		}
-
-	}
-
-	&__title-container {
-		display: inline-block;
-		width: calc(100% - 6rem);
-	}
-
-	&__name {
-		@include truncate;
-		font-size: 1.3rem;
-		line-height: 2rem;
-		color: #858585;
-		user-select: none;
-	}
-
-	&__placeholder {
-		@include truncate;
-		font-size: 1.6rem;
-		line-height: 2.4rem;
-		color: #B5B5B5;
-		user-select: none;
-	}
-
-	&__select-icons-container {
-		float: right;
-		margin-top: .8rem;
-	}
-	
-	&__select-icon {
-		vertical-align: middle;
-		transition: transform .2s ease;
-	}
-
-	&__badge {
-		display: inline-block;
-		margin-right: .4rem;
-		vertical-align: middle;
-    height: 1.3rem;
-    width: 1.3rem;
-		border-radius: 50%;
-		background-color: transparent;
-		vertical-align: middle;
-
-		&--success {
-			background-color: $colorSuccess;
-		}
-
-		&--error {
-			background-color: $colorError;
-		}
-	}
-
-	&__hint {
-		margin-top: 4px;
-		height: 2rem;
-		font-size: 1.3rem;
-		line-height: 2rem;
-
-		&--error {
-			color: $colorError;
-		}
-
-		&--success {
-			color: $colorSuccess;
-		}
-	}
-	
-	&__select {
-		@include customScrollbar;
-		overflow-y: auto;
-    max-height: 25rem;
-		position: absolute;
-		z-index: 999;
-		left: 0;
-		right: 0;
-		user-select: none;
-		animation: fadein .2s ease;
-	}
-
-	&__option {
-		background: #363636;
-		padding: 1.2rem 1.6rem;
-		vertical-align: middle;
-
-		&::-moz-focus-inner {
-			border: 0;
-		}
-		
-		&:focus {
-			outline: none;
-		}
-		
-		&:hover:not(.disabled),
-		&:focus:not(.disabled) {
-			background-color: #404040;
-			color: $colorNeutral50;
-			cursor: pointer;
-		}
-
-		&.disabled .#{$compName}__option-label {
-			opacity: 0.5;
-		}
-
-		&.selected .#{$compName}__option-label {
-			color: $colorSecondary;
-		}
-		
-		&-label {
-			@include truncate;
-			display: inline-block;
-			font-size: 1.6rem;
-			line-height: 2.4rem;
-			color: #B5B5B5;
-			max-width: calc(100% - 3.4rem);
-		}
-
-		&-icon {
-			vertical-align: middle;
-			float: right;
-		}
-	}
-
-	@keyframes fadein {
-    from {
-        opacity:0;
+    &:not(.disabled) .#{$compName}__selected {
+        cursor: pointer;
     }
-    to {
-        opacity:1;
+
+    &.disabled {
+        opacity: 0.5;
     }
-	}
+
+    & select {
+        display: none; /*hide original SELECT element: */
+    }
+
+    &.opened {
+        .#{$compName}__select-icon {
+            transform: rotate(180deg);
+        }
+
+        .#{$compName}__placeholder {
+            color: $colorNeutral50;
+        }
+
+        .#{$compName}__name {
+            color: $colorSecondary;
+        }
+    }
+
+    &__selected {
+        position: relative;
+        background: #2e2e2e;
+        height: 5.6rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.4rem 2rem 0.8rem 1.6rem;
+        outline: none;
+        border: 0.1rem solid transparent;
+        border-radius: 0;
+        border-bottom: 0.2rem solid #858585;
+        display: block;
+
+        &--success {
+            border-bottom-color: $colorSuccess;
+        }
+
+        &--error {
+            border-bottom-color: $colorError;
+        }
+
+        &:focus:not(.disabled) {
+            border-bottom-color: $colorSecondary;
+            outline: none;
+            box-shadow: $boxShadow;
+            border-top: 0.1rem solid $colorSecondary;
+            border-left: 0.1rem solid $colorSecondary;
+            border-right: 0.1rem solid $colorSecondary;
+        }
+
+        &:hover:not(.disabled),
+        &:focus:not(.disabled) {
+            border-bottom-color: $colorSecondary;
+
+            .#{$compName}__placeholder {
+                color: $colorNeutral50;
+            }
+        }
+    }
+
+    &__title-container {
+        display: inline-block;
+        width: calc(100% - 6rem);
+    }
+
+    &__name {
+        @include truncate;
+        font-size: 1.3rem;
+        line-height: 2rem;
+        color: #858585;
+        user-select: none;
+    }
+
+    &__placeholder {
+        @include truncate;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        color: #b5b5b5;
+        user-select: none;
+    }
+
+    &__select-icons-container {
+        float: right;
+        margin-top: 0.8rem;
+    }
+
+    &__select-icon {
+        vertical-align: middle;
+        transition: transform 0.2s ease;
+    }
+
+    &__badge {
+        display: inline-block;
+        margin-right: 0.4rem;
+        vertical-align: middle;
+        height: 1.3rem;
+        width: 1.3rem;
+        border-radius: 50%;
+        background-color: transparent;
+        vertical-align: middle;
+
+        &--success {
+            background-color: $colorSuccess;
+        }
+
+        &--error {
+            background-color: $colorError;
+        }
+    }
+
+    &__hint {
+        margin-top: 4px;
+        height: 2rem;
+        font-size: 1.3rem;
+        line-height: 2rem;
+
+        &--error {
+            color: $colorError;
+        }
+
+        &--success {
+            color: $colorSuccess;
+        }
+    }
+
+    &__select {
+        @include customScrollbar;
+        overflow-y: auto;
+        max-height: 25rem;
+        position: absolute;
+        z-index: 999;
+        left: 0;
+        right: 0;
+        user-select: none;
+        animation: fadein 0.2s ease;
+    }
+
+    &__option {
+        background: #363636;
+        padding: 1.2rem 1.6rem;
+        vertical-align: middle;
+
+        &::-moz-focus-inner {
+            border: 0;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover:not(.disabled),
+        &:focus:not(.disabled) {
+            background-color: #404040;
+            color: $colorNeutral50;
+            cursor: pointer;
+        }
+
+        &.disabled .#{$compName}__option-label {
+            opacity: 0.5;
+        }
+
+        &.selected .#{$compName}__option-label {
+            color: $colorSecondary;
+        }
+
+        &-label {
+            @include truncate;
+            display: inline-block;
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+            color: #b5b5b5;
+            max-width: calc(100% - 3.4rem);
+        }
+
+        &-icon {
+            vertical-align: middle;
+            float: right;
+        }
+    }
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 }
